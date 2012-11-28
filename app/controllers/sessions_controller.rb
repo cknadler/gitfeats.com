@@ -1,8 +1,11 @@
 require 'oauth2'
+require 'yaml'
+
 class SessionsController < ApplicationController
+    before_filter :load_info, :only => [:new]
 
     def new
-      client = OAuth2::Client.new('d2b082d97afcd2282f58', 'fbf42062a04633298574914300abd70b84dd8e68', 
+      client = OAuth2::Client.new(@id, @secret, 
         :site => 'https://github.com',
         :authorize_path => '/login/oauth/authorize', 
         :access_token_path => '/login/oauth/access_token')
@@ -11,11 +14,17 @@ class SessionsController < ApplicationController
     end
 
     def authorize
-      redirect_to root
+      redirect_to root_path
     end
 
     def destroy
         session[:user_id] = nil
         redirect_to root_url, :notice => "Logged out"
+    end
+
+    def load_info
+      file = YAML.load_file("config/git_secret.yml")
+      @secret = file["secret"] 
+      @id = file["id"]
     end
 end

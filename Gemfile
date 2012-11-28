@@ -12,10 +12,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem "omniauth-github"
 gem 'zurb-foundation', '~> 3.2.2'
 gem 'bcrypt-ruby',     '~> 3.0.0'
-
-gem 'oauth2'
 
 gem 'jquery-rails'
 

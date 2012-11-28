@@ -1,20 +1,27 @@
-require 'oauth2'
-require 'yaml'
-
-class SessionsController < ApplicationController
-    before_filter :load_info, :only => [:new]
-
+class SessionsController < ApplicationController    
     def new
-      client = OAuth2::Client.new(@id, @secret, 
-        :site => 'https://github.com',
-        :authorize_path => '/login/oauth/authorize', 
-        :access_token_path => '/login/oauth/access_token')
-      url = client.auth_code.authorize_url(:redirect_url => authorize_url)
-      redirect_to url
+
     end
 
-    def authorize
-      redirect_to root_path
+#where the callback comes in
+    def create
+      auth_hash = request.env['omniauth.auth']
+      @authorization = Authorization.find_by_provider_and_uid(auth_hash["provider"], auth_hash["uid"])
+      if @authorization
+        render :text => "Welcome back #{@authorization.user.name}! You have already signed up."
+      else
+        render :text => auth_hash.inspect
+=begin        
+        user = User.new :name => auth_hash["user_info"]["name"], :email => auth_hash["user_info"]["email"]
+        user.authorizations.build :provider => auth_hash["provider"], :uid => auth_hash["uid"]
+        user.save
+        render :text => "Hi #{user.name}! You've signed up."
+=end
+      end
+    end
+    
+    def failure
+
     end
 
     def destroy
@@ -22,9 +29,4 @@ class SessionsController < ApplicationController
         redirect_to root_url, :notice => "Logged out"
     end
 
-    def load_info
-      file = YAML.load_file("config/git_secret.yml")
-      @secret = file["secret"] 
-      @id = file["id"]
-    end
 end

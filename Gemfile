@@ -15,6 +15,8 @@ end
 gem 'zurb-foundation', '~> 3.2.2'
 gem 'bcrypt-ruby',     '~> 3.0.0'
 
+gem 'oauth2'
+
 gem 'jquery-rails'
 
 gem 'execjs'

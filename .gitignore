@@ -7,3 +7,6 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore our git secret/id file
+/config/git_secret.yml

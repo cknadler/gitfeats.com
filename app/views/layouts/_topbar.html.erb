@@ -1,12 +1,10 @@
-  <!-- Navigation -->
-
   <nav class="top-bar fixed">
     <ul>
       <li class="name"><h1><a href="#">Git-Feats</a></h1></li>
       <li class="toggle-topbar"><a href="#"></a></li>
     </ul>
 
-<section>
+  <section>
     <ul class="right">
       <li><a href="#">Setup</a></li>
       <li class="has-dropdown">
@@ -16,12 +14,13 @@
         </ul>
       </li>
       <li class="has-button">
-        <li> <%= link_to "login", "/auth/github" %> </li>
+        <% if logged_in? %>
+          <li> <%= link_to "#{@current_user.nickname}(logout)", logout_path, :method => :delete %> </li>
+        <% else %>  
+          <li> <%= link_to "login", login_path %> </li>
+        <% end %>
       </li>
     </ul>
   </section>
 
   </nav><br><br>
-
-  <!-- End Navigation -->
-

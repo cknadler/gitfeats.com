@@ -5,27 +5,25 @@
 <!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
 <head>
-	<meta charset="utf-8" />
-	
-	<!-- Uncomment to make IE8 render like IE7 -->
-	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
-	
-	<!-- Set the viewport width to device width for mobile -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	
-	<title><%= content_for?(:title) ? yield(:title) : "GitFeats" %></title>
+  <meta charset="utf-8" />
   
-	<!-- Included CSS Files -->
-	<%= stylesheet_link_tag    "application" %>
-	
-	<!-- Included JS Files  -->
-	<%= javascript_include_tag "application" %>
+  <!-- Set the viewport width to device width for mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title><%= content_for?(:title) ? yield(:title) : "GitFeats" %></title>
+
+  <!-- Included CSS Files -->
+  <%= stylesheet_link_tag    "application" %>
+  
+  <!-- Included JS Files  -->
+  <%= javascript_include_tag "application" %>
   
   <%= csrf_meta_tags %>
 </head>
-  <%= render :partial => "layouts/topbar" %>
+
+<%= render :partial => "layouts/topbar" %>
+
 <body>
-  <%= @file %>
   <%= yield %>
 </body>
 </html>

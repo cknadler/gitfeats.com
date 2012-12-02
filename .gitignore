@@ -8,5 +8,4 @@
 /log/*.log
 /tmp
 
-# Ignore our git secret/id file
-/config/git_secret.yml
+config/git_secret.yml

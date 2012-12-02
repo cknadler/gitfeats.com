@@ -1,13 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  username: MyString
-  first_name: MyString
-  last_name: MyString
-  admin: false
+  uid: 1
+  provider: MyString
+  nickname: MyString
+  email: MyString
+  gravatar_id: 1
+  token: MyString
 
 two:
-  username: MyString
-  first_name: MyString
-  last_name: MyString
-  admin: false
+  uid: 1
+  provider: MyString
+  nickname: MyString
+  email: MyString
+  gravatar_id: 1
+  token: MyString

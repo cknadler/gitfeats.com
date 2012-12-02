@@ -7,3 +7,5 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+config/git_secret.yml

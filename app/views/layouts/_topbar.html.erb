@@ -15,7 +15,12 @@
       </li>
       <li class="has-button">
         <% if logged_in? %>
-          <li> <%= link_to "#{@current_user.nickname}(logout)", logout_path, :method => :delete %> </li>
+          <li> <%= link_to "#{@current_user.nickname}", @current_user %> </li>
+        <% end %>
+      </li>
+      <li class="has-button">
+        <% if logged_in? %>
+          <li> <%= link_to "logout", logout_path, :method => :delete %> </li>
         <% else %>  
           <li> <%= link_to "login", login_path %> </li>
         <% end %>

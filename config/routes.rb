@@ -5,4 +5,6 @@ Gitfeats::Application.routes.draw do
   match '/auth/github/callback',  :to => 'sessions#create'
   match '/auth/failure',          :to => 'sessions#failure'
   match 'logout',                 :to => 'sessions#destroy', :via => :delete
+  
+  resources :users, :only => [:show, :destroy]
 end

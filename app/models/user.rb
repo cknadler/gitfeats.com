@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
     where(conditions).first
   end
 
+  private
+
   def self.extract_info(hash)
     provider    = hash.fetch('provider')
     uid         = hash.fetch('uid')

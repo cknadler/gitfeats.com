@@ -7,4 +7,5 @@ Gitfeats::Application.routes.draw do
   match 'logout',                 :to => 'sessions#destroy', :via => :delete
   
   resources :users, :only => [:show, :destroy]
+  match 'apipost',               :to => 'api#apipost', :via => :post
 end

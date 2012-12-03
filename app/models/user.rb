@@ -2,10 +2,6 @@ require 'digest'
 class User < ActiveRecord::Base
   attr_accessible :email, :gravatar_id, :nickname, :provider, :token, :uid, :gemkey
   before_create :create_gemkey
-   
-  def create_gemkey
-    self.gemkey = self.nickname + '-' + Digest::SHA1.hexdigest(Time.now.to_s)   
-  end
   
   def self.create_from_auth_hash(hash)
     create!(extract_info(hash))
@@ -17,7 +13,11 @@ class User < ActiveRecord::Base
   end
 
   private
-
+  
+  def create_gemkey
+    self.gemkey = self.nickname + '-' + Digest::SHA1.hexdigest(Time.now.to_s)   
+  end
+  
   def self.extract_info(hash)
     provider    = hash.fetch('provider')
     uid         = hash.fetch('uid')

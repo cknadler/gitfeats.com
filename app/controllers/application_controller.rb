@@ -1,6 +1,6 @@
-class ApplicationController < ActionController::Base
-  protect_from_forgery
+class ApplicationController < ActionController::Base  
   before_filter :initialize_user
+  protect_from_forgery
   helper_method :logged_in?
   
   def initialize_user

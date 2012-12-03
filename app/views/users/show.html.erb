@@ -1,1 +1,8 @@
 <h1> <%= @user.nickname %> </h1>
+
+<% if check_user(@user.id) && !@user.authenticated %>  
+  <p> You need to authenticate with our gem! </p>
+  <p> Paste the following into your .gitconfig file: 
+    <em> <%=@user.gemkey%> </em> 
+  </p>
+<% end %>

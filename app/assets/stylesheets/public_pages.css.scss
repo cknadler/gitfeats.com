@@ -2,18 +2,57 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-header#homepage h1 { font-size: 72px; color: #fff; padding-top: 90px; padding-left: 5px; font-weight: normal;}
-header#homepage h4 { padding-left: 7px;}
-header#homepage img { padding-top: 104px; padding-left: 20px;}
-
-header#homepage { 
-	background: url("/assets/home_banner.png") center bottom no-repeat #2a353d; 
-	padding: 1px 5px 30px; 
-	box-shadow: 0px 2px 2px #888888;
+#banner h1 { 
+  font-size: 72px; 
+  color: #fff; 
+  padding-top: 90px; 
+  padding-left: 5px; 
+  font-weight: normal;
 }
 
-header#homepage a { margin-top: 80px; padding-left:60px; padding-right:60px;}
+#banner h4 { 
+  padding-left: 7px;
+}
+#banner img { 
+  padding-top: 104px; 
+  padding-left: 20px;
+}
 
-header#homepage .button { color: #000; background-color: #ec9222; border: #ec9222;}
+#banner { 
+  background: url("/assets/home_banner.png") center bottom no-repeat #2a353d; 
+  padding: 1px 5px 30px; 
+  box-shadow: 0px 2px 2px #888888;
+}
 
-header#homepage .button:hover { background-color: #c67720; }
+#banner a { 
+  margin-top: 80px; 
+  padding-left:60px; 
+  padding-right:60px;
+}
+
+#banner .button { 
+  color: #000; 
+  background-color: #ec9222; 
+  border: #ec9222;
+}
+
+#banner .button:hover { 
+  background-color: #c67720; 
+}
+
+#social-buttons {
+  margin-top: 28px;
+}
+
+ul#social-buttons-list {
+  list-style: none;
+  padding-left: 30px;
+}
+
+ul#social-buttons-list li {
+  display: inline-block;
+}
+
+#main-description {
+  margin-top: 30px;
+}

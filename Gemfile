@@ -12,24 +12,15 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-
+# OAuth
 gem 'omniauth'
 gem 'omniauth-github'
-gem 'octokit'
-gem 'zurb-foundation', '~> 3.2.2'
-gem 'bcrypt-ruby',     '~> 3.0.0'
 
+gem 'zurb-foundation', '~> 3.2.2'
 gem 'jquery-rails'
 
 gem 'execjs'
-
 gem 'therubyracer'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
 
 group :development do
   gem 'debugger'

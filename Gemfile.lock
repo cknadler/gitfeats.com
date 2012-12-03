@@ -58,6 +58,7 @@ GEM
     faraday (0.8.4)
       multipart-post (~> 1.1)
     fssm (0.2.9)
+    gravtastic (3.2.6)
     hashie (1.2.0)
     hike (1.2.1)
     httpauth (0.2.0)
@@ -159,6 +160,7 @@ DEPENDENCIES
   compass-rails
   debugger
   execjs
+  gravtastic
   jquery-rails
   omniauth
   omniauth-github

@@ -1,5 +1,8 @@
 require 'digest'
 class User < ActiveRecord::Base
+  include Gravtastic
+  has_gravatar
+
   attr_accessible :email, :gravatar_id, :nickname, :provider, :token, :uid, :gemkey
   before_create :create_gemkey
   

@@ -19,6 +19,8 @@ gem 'omniauth-github'
 gem 'zurb-foundation', '~> 3.2.2'
 gem 'jquery-rails'
 
+gem 'gravtastic'
+
 gem 'execjs'
 gem 'therubyracer'
 

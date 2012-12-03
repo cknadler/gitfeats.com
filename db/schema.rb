@@ -33,4 +33,5 @@ ActiveRecord::Schema.define(:version => 20121203003915) do
     t.boolean  "authenticated", :default => false
     t.string   "gemkey"
   end
+
 end

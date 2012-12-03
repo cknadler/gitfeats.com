@@ -1,0 +1,31 @@
+  <nav class="top-bar fixed">
+    <ul>
+      <li class="name"><h1><a href="#">Git-Feats</a></h1></li>
+      <li class="toggle-topbar"><a href="#"></a></li>
+    </ul>
+
+  <section>
+    <ul class="right">
+      <li><a href="#">Setup</a></li>
+      <li class="has-dropdown">
+        <a href="#">Feats</a>
+        <ul class="dropdown">
+          <li><a href="#">Show All</a></li>
+        </ul>
+      </li>
+      <li class="has-button">
+        <% if logged_in? %>
+          <li> <%= link_to "#{@current_user.nickname}", @current_user %> </li>
+        <% end %>
+      </li>
+      <li class="has-button">
+        <% if logged_in? %>
+          <li> <%= link_to "logout", logout_path, :method => :delete %> </li>
+        <% else %>  
+          <li> <%= link_to "login", login_path %> </li>
+        <% end %>
+      </li>
+    </ul>
+  </section>
+
+  </nav><br><br>

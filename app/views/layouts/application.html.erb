@@ -21,9 +21,8 @@
   <%= csrf_meta_tags %>
 </head>
 
-<%= render :partial => "layouts/topbar" %>
-
 <body>
+  <%= render :partial => "shared/topbar" %>
   <%= yield %>
 </body>
 </html>

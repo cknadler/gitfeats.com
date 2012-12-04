@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @conf_command = format_conf_command(@user)
+    @install_cmd = "gem install git-feats"
+    @conf_cmd = format_conf_command(@user)
+    @alias_cmd = "echo 'alias git=git-feats' >> .bashrc"
+    @one_liner = [@conf_cmd, @install_cmd, @alias_cmd].join(" && ") 
   end
 
   def destroy

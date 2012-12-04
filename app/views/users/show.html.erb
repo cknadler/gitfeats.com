@@ -1,20 +1,44 @@
-
-
 <div class="row">    
-    
-  <!-- Main Content Section -->
-  <!-- This has been source ordered to come first in the markup (and on small devices) but to be to the right of the nav on larger screens -->
   <div class="nine columns push-three">
     <% if check_user(@user.id) && !@user.authenticated %>  
-      <em><%= @conf_command %></em> 
+      <ul id="user-show-setup">
+        <li>You don't have any feats yet!</li>
+        <li>Lets get you set up...</li>
+
+        <li>Everyone loves a one-liner:</li>
+        <li>
+          <div class="six mobile-three columns">
+            <input type="text" value="<%=@one_liner%>"/>
+          </div>
+        </li>
+
+        <li>Or, step by step:</li>
+        <li>Install the gem</li>
+        <li>
+        <div class="six mobile-three columns">
+          <input type="text" value="<%=@install_cmd%>"/>
+        </div>
+        </li>
+        <li>Add your API key</li>
+        <li>
+        <div class="ten mobile-three columns">
+          <input type="text" value="<%=@conf_cmd%>"/>
+        </div>
+        </li>
+        <li>Optionally, alias git</li>
+        <li>
+        <div class="ten mobile-three columns">
+          <input type="text" value="<%=@alias_cmd%>"/>
+        </div>
+        </li>
+      </ul>
     <% end %>
   </div>
     
     
-  <!-- Nav Sidebar -->
-  <!-- This is source ordered to be pulled to the left on larger screens -->
   <div class="three columns pull-nine">
+    <%= link_to image_tag(@user.gravatar_url(size: 300)),
+      @user, class: "th" %>
     <h3><%= @user.nickname %></h3>
   </div>
-  
 </div>

@@ -1,37 +1,9 @@
 <div class="row">    
   <div class="nine columns push-three">
     <% if check_user(@user.id) && !@user.authenticated %>  
-      <ul id="user-show-setup">
-        <li>You don't have any feats yet!</li>
-        <li>Lets get you set up...</li>
-
-        <li>Everyone loves a one-liner:</li>
-        <li>
-          <div class="six mobile-three columns">
-            <input type="text" value="<%=@one_liner%>"/>
-          </div>
-        </li>
-
-        <li>Or, step by step:</li>
-        <li>Install the gem</li>
-        <li>
-        <div class="six mobile-three columns">
-          <input type="text" value="<%=@install_cmd%>"/>
-        </div>
-        </li>
-        <li>Add your API key</li>
-        <li>
-        <div class="ten mobile-three columns">
-          <input type="text" value="<%=@conf_cmd%>"/>
-        </div>
-        </li>
-        <li>Optionally, alias git</li>
-        <li>
-        <div class="ten mobile-three columns">
-          <input type="text" value="<%=@alias_cmd%>"/>
-        </div>
-        </li>
-      </ul>
+      <%= render 'setup' %>
+    <% else %>
+      <%= render 'feeds' %>
     <% end %>
   </div>
     

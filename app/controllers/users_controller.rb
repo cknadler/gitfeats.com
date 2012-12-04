@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+
+    # Setup commands
     @install_cmd = "gem install git-feats"
     @conf_cmd = format_conf_command(@user)
     @alias_cmd = "echo 'alias git=git-feats' >> .bashrc"

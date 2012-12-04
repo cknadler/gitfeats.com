@@ -1,6 +1,11 @@
 class ApiController < ApplicationController
-  respond_to :json
-  def apipost
-    render :text => "hi"
+  def post_feats
+    render :nothing => true
+  end
+
+  private
+
+  # Takes a JSON object and returns formatted ruby Hash
+  def parse_data(data)
   end
 end

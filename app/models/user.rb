@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   include Gravtastic
   has_gravatar
 
-  attr_accessible :email, :gravatar_id, :nickname, :provider, :token, :uid, :gemkey
-  before_create :create_gemkey
+  attr_accessible :email, :nickname, :provider, :token, :uid, :gemkey
+  before_save :create_gemkey
   
   def self.create_from_auth_hash(hash)
     create!(extract_info(hash))
@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   private
   
   def create_gemkey
-    self.gemkey = self.nickname + '-' + Digest::SHA1.hexdigest(Time.now.to_s)   
+    self.gemkey = Digest::SHA1.hexdigest(Time.now.to_s)   
   end
   
   def self.extract_info(hash)
@@ -26,7 +26,6 @@ class User < ActiveRecord::Base
     uid         = hash.fetch('uid')
     nickname    = hash.fetch('info',{}).fetch('nickname')
     email       = hash.fetch('info',{}).fetch('email', nil)
-    gravatar_id = hash.fetch('extra',{}).fetch('raw_info',{}).fetch('gravatar_id', nil)
     token       = hash.fetch('credentials', {}).fetch('token')
 
     {
@@ -35,8 +34,6 @@ class User < ActiveRecord::Base
       :uid => uid,
       :nickname => nickname,
       :email => email,
-      :gravatar_id => gravatar_id
     }
   end
-
 end

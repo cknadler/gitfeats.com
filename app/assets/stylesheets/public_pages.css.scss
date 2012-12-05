@@ -2,13 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#banner h1 { 
-  font-size: 72px; 
-  color: #fff; 
-  padding-top: 90px; 
-  padding-left: 5px; 
-  font-weight: normal;
-}
 
 .top-bar ul > li.has-button a {
 	padding-top:3px;
@@ -22,8 +15,16 @@
   color:#63B0EA;
 }
 
-.header_img {
-	padding-top:7px;
+.top-bar#name img {
+	padding-top:5px;
+}
+
+#banner h1 { 
+  font-size: 72px; 
+  color: #fff; 
+  padding-top: 90px; 
+  padding-left: 5px; 
+  font-weight: normal;
 }
 
 #banner h4 { 

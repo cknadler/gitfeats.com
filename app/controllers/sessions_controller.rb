@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       user      = User.find_by_auth_hash(auth_hash) ||
                   User.create_from_auth_hash(auth_hash)
       session[:user_id] = user.id
-      redirect_to root_url
+      redirect_to user
     end
     
     def failure

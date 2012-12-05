@@ -11,7 +11,11 @@
   </div>
   <div class="row">
     <div class="three columns centered">
-      <%= link_to "Get Started", setup_path, :class => "large button radius" %>
+      <% if logged_in? %>
+        <%= link_to "View Feats", @current_user, :class => "large button radius" %>
+      <% else %>
+        <%= link_to "Get Started", login_path, :class => "large button radius" %>
+      <% end %>
     </div>
   </div>
 </div>

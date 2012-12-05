@@ -1,31 +1,52 @@
-<ul id="user-show-setup">
-  <li>You don't have any feats yet!</li>
-  <li>Lets get you set up...</li>
+<div class="row">
+  <div class="twelve columns">
+    <h3 id="no-feat-notice">You haven't completed any feats!</h3>
+  </div>
+</div>
 
-  <li>Everyone loves a one-liner:</li>
-  <li>
-    <div class="six mobile-three columns">
-      <input type="text" value="<%=@one_liner%>"/>
+<div class="row">
+  <div class="twelve columns">
+    <h4 class="subheader">Setup</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="twelve columns">
+
+    <div class="panel">
+      <h5>Everyone loves a one-liner:</h5>
+          
+      <div class="row">
+        <div class="twelve columns">
+          <input type="text" value="<%=@one_liner%>"/>
+        </div>
+      </div>
+
+      <h5>Or, step by step:</h5>
+      <h6>Install the gem</h6>
+
+      <div class="row">
+        <div class="twelve mobile-three columns">
+          <input type="text" value="<%=@install_cmd%>"/>
+        </div>
+      </div>
+
+      <h6>Add your API key</h6>
+
+      <div class="row">
+        <div class="twelve mobile-three columns">
+          <input type="text" value="<%=@conf_cmd%>"/>
+        </div>
+      </div>
+
+
+      <h6>Alias git</h6>
+
+      <div class="row">
+        <div class="twelve mobile-three columns">
+          <input type="text" value="<%=@alias_cmd%>"/>
+        </div>
+      </div>
     </div>
-  </li>
-
-  <li>Or, step by step:</li>
-  <li>Install the gem</li>
-  <li>
-  <div class="six mobile-three columns">
-    <input type="text" value="<%=@install_cmd%>"/>
   </div>
-  </li>
-  <li>Add your API key</li>
-  <li>
-  <div class="ten mobile-three columns">
-    <input type="text" value="<%=@conf_cmd%>"/>
-  </div>
-  </li>
-  <li>Optionally, alias git</li>
-  <li>
-  <div class="ten mobile-three columns">
-    <input type="text" value="<%=@alias_cmd%>"/>
-  </div>
-  </li>
-</ul>
+</div>

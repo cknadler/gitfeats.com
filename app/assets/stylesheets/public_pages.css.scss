@@ -10,6 +10,22 @@
   font-weight: normal;
 }
 
+.top-bar ul > li.has-button a {
+	padding-top:3px;
+}
+
+.top-bar ul > li:not(.name):hover, .top-bar ul > li:not(.name).active {
+  background: none;
+}
+
+.top-bar ul > li:not(.name):hover a, .top-bar ul > li:not(.name).active a {
+  color:#63B0EA;
+}
+
+.header_img {
+	padding-top:7px;
+}
+
 #banner h4 { 
   padding-left: 7px;
 }

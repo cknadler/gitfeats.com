@@ -1,7 +1,7 @@
 <div id= "header" class="contain-to-grid">
   <nav class="top-bar">
     <ul>
-      <li class="name"><h1><%= link_to "Git Feats", root_path %></h1></li>
+      <li class="header_img"><img src="/assets/git-feats_header.png"></li><li class="name"><h1><%= link_to "Git Feats", root_path %></h1></li>
       <li class="toggle-topbar"><a href="#"></a></li>
     </ul>
 
@@ -9,7 +9,7 @@
       <ul class="right">
         <% if logged_in? %>
           <li class="has-button">
-            <%= link_to image_tag(@current_user.gravatar_url(size: 20)), 
+            <%= link_to image_tag(@current_user.gravatar_url(size: 40)), 
               @current_user %>
           </li>
           <li><%= link_to @current_user.nickname, @current_user %></li>

@@ -1,6 +1,7 @@
 Gitfeats::Application.routes.draw do
 
   root to: 'public_pages#home'
+  match '/setup',                  to: 'public_pages#setup'
 
   get   'login',                  to: 'sessions#new'
   match '/auth/github/callback',  to: 'sessions#create'

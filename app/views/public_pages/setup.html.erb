@@ -1,0 +1,70 @@
+
+<div class="row">
+  <div class="twelve columns">
+    <h1>Let's get set up</h1>
+    <h4 class="subheader"> 
+        <% if logged_in? %>
+          To start earning achievements follow the quick steps below.
+       <% else %>
+          To get started you must sign up using git hub. If you dont have a github account, you can sign up. Its easy, free, and awesome.
+          Come back here once you're done, we'll be waiting. 
+      <% end %>
+    </h4>
+  </div>
+</div>
+
+<div class="row">
+    <div class="twelve columns">
+    
+      <div class="panel">
+        <h4>Everyone loves a one-liner:</h4>
+            
+        <div class="row">
+          <div class="twelve columns">
+                  <input type="text" onclick="javascript:select();" value="git config --global feats.key dasmoose- && gem install git-feats && echo 'alias git=git-feats' >> .bashrc"/>
+          </div>
+        </div>
+    </div>
+
+      <div class="panel">
+        <h4>Or, step by step:</h4>
+        <h5>Install the gem</h5>
+            
+        <div class="row">
+          <div class="twelve columns">
+            <div class="six mobile-three columns">
+                <input type="text" onclick="javascript:select();" value="gem install git-feats"/>
+            </div>
+          </div>
+        </div>
+
+        <h5>Add your API key</h5>
+
+        <div class="row">
+          <div class="twelve columns">
+            <div class="six mobile-three columns">
+              <% if logged_in? %>
+                <input type="text" onclick="javascript:select();" value="git config --global feats.key dasmoose- >> .bashrc"/>
+              <% else %>
+                <div class="alert-box alert">
+                    You have to log in to get a key for this step. It's easy.
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+
+        <h5>Optionally, alias git</h5>
+
+        <div class="row">
+          <div class="twelve columns">
+            <div class="six mobile-three columns">
+                <input type="text" onclick="javascript:select();" value="echo 'alias git=git-feats' >> .bashrc"/>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+</div>

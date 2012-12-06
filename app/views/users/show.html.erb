@@ -8,9 +8,12 @@
   </div>
     
     
-  <div class="three columns pull-nine">
-    <%= link_to image_tag(@user.gravatar_url(size: 300)),
-      @user, class: "th" %>
+<div class="three columns pull-nine">
+    <%= link_to image_tag(@user.gravatar_url(size: 300)), @user, class: "th" %>
     <h3><%= @user.nickname %></h3>
-  </div>
+    <h5 class="subheader">Number of feats: 5</h5>
+   		<div class="radius progress ten">
+   			<span class="meter"></span>
+   	   	</div>
+   	   	<span class="prog_text"><h6> 6/30</h6></span>
 </div>

@@ -27,4 +27,5 @@ gem 'therubyracer'
 
 group :development do
   gem 'debugger'
+  gem 'annotate'
 end

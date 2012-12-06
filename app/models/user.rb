@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id            :integer          not null, primary key
+#  uid           :integer
+#  provider      :string(255)
+#  nickname      :string(255)
+#  email         :string(255)
+#  token         :string(255)
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  gemkey        :string(255)
+#  authenticated :boolean          default(FALSE)
+#
+
 require 'digest'
 class User < ActiveRecord::Base
   include Gravtastic

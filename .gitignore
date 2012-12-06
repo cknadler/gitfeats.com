@@ -7,5 +7,5 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-
+.DS_STORE
 config/git_secret.yml

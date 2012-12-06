@@ -1,4 +1,4 @@
-<div id= "header" class="contain-to-grid">
+<div id="header" class="contain-to-grid">
   <nav class="top-bar">
     <ul>
       <li class="name"><img src="/assets/git-feats_header.png"></li>
@@ -9,14 +9,22 @@
     <section>
       <ul class="right">
         <% if logged_in? %>
-          <li class="has-button">
-            <%= link_to image_tag(@current_user.gravatar_url(size: 40)), 
+          <li class="avatar">
+            <!-- This is a hack to get retina images from gravatar -->
+            <%= link_to image_tag(@current_user.gravatar_url(size: 140),
+              height: 20, width: 20, class: "rounded"), 
               @current_user %>
           </li>
-          <li><%= link_to @current_user.nickname, @current_user %></li>
-          <li><%= link_to "logout", logout_path, :method => :delete %></li>
+          <li>
+            <%= link_to @current_user.nickname, @current_user %>
+          </li>
+          <li>
+            <%= link_to "logout", logout_path, :method => :delete %>
+          </li>
         <% else %>
-          <li> <%= link_to "login", login_path %> </li>
+          <li>
+            <%= link_to "Sign in with Github", login_path %>
+          </li>
         <% end %>
       </ul>
     </section>

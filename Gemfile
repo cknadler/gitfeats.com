@@ -22,8 +22,10 @@ gem 'jquery-rails'
 gem 'gravtastic'
 
 gem 'execjs'
+gem 'libv8', '~> 3.11.8'
 gem 'therubyracer'
 
 group :development do
   gem 'debugger'
+  gem 'annotate'
 end

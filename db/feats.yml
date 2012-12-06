@@ -1,0 +1,251 @@
+---
+"add":
+  :bricks_and_mortar:
+    :name: "Bricks and Mortar"
+    :desc: "Added files to the index area for inclusion in the next commit with git add"
+    :count: 1
+
+"am":
+  :delivery:
+    :name: "Delivery"
+    :desc: "Applied a patch using git am"
+    :count: 1
+
+"bisect":
+  :bug_hunter:
+    :name: "Bug Hunter"
+    :desc: "Performed a binary search to find which change introduced a bug with git bisect"
+    :count: 1
+
+"blame":
+  :blame_game:
+    :name: "Blame Game"
+    :desc: "Used git blame to annotate a file with information about changes"
+    :count: 1
+
+"bundle":
+  :cold_transfer:
+    :name: "Cold Transfer"
+    :desc: "Bundled git objects and refs with git bundle"
+    :count: 1
+
+"cherry-pick":
+  :fine_grain:
+    :name: "Fine Grain"
+    :desc: "Applied a commit from one branch to another with git cherry-pick"
+    :count: 1
+
+"checkout":
+  :shopping_spree:
+    :name: "Shopping Spree"
+    :desc: "Changed branches with git checkout"
+    :count: 1
+
+"checout -b":
+  :impulse_buy:
+    :name: "Impulse Buy" 
+    :desc: "Created a new branch with git checkout -b"
+    :count: 1
+
+"clean":
+  :mr_clean:
+    :name: "Mr. Clean"
+    :desc: "Used git clean to remove untracked files from the working tree"
+    :count: 1
+
+"clone":
+  :replicator:
+    :name: "Replicator"
+    :desc: "Used git clone to copy a repository into a new directory"
+    :count: 1
+
+"commit":
+  :author:
+    :name: "Author"
+    :desc: "Made a commit using git commit"
+    :count: 1
+  :bestseller:
+    :name: "Bestseller"
+    :desc: "Made 100 commits using git commit"
+    :count: 100
+
+"config":
+  :tinkerer:
+    :name: "Tinkerer"
+    :desc: "Used git config to set configuration options"
+    :count: 1
+
+"diff":
+  :foreshadowing:
+    :name: "Foreshadowing"
+    :desc: "Used git diff to see a diff of changes"
+    :count: 1
+
+"fetch":
+  :expansion:
+    :name: "Expansion"
+    :desc: "Downloaded objects and refs from another repository with git fetch"
+    :count: 1
+
+"filter-branch":
+  :hedge_trimming:
+    :name: "Hedge Trimming"
+    :desc: "Rewrote a branch with git filter-branch"
+    :count: 1
+
+"format-patch":
+  :mail_clerk:
+    :name: "Mail Clerk"
+    :desc: "Prepared patches for email submission with git format-patch"
+    :count: 1
+
+"gc":
+  :housekeeping:
+    :name: "Housekeeping"
+    :desc: "Optimized a local repository with git gc"
+    :count: 1
+
+"grep":
+  :private_investigator:
+    :name: "Private Investigator"
+    :desc: "Searched tracked files using git grep"
+    :count: 1
+
+"imap-send":
+  :mailman:
+    :name: "Mailman"
+    :desc: "Sent patches to an IMAP folder using git imap-send"
+    :count: 1
+
+"init":
+  :empty_lot:
+    :name: "Empty Lot"
+    :desc: "Initialize a git repository with git init"
+    :count: 1
+
+"instaweb":
+  :pixels_everywhere:
+    :name: "Pixels Everywhere"
+    :desc: "Browse your working repository on gitweb with git instaweb"
+    :count: 1
+
+"log":
+  :historian:
+    :name: "Historian"
+    :desc: "Read the commit history with git log"
+    :count: 1
+
+"merge":
+  :unification:
+    :name: "Unification"
+    :desc: "Joined two or more commit histories with git merge"
+    :count: 1
+
+"mv":
+  :moving_day:
+    :name: "Moving Day"
+    :desc: "Moved something with git mv"
+    :count: 1
+
+"pull":
+  :assimilation:
+    :name: "Assimilation"
+    :desc: "Fetched from and merged with another repository with git pull"
+    :count: 1
+
+"push":
+  :social_butterfly:
+    :name: "Social Butterfly"
+    :desc: "Pushed a branch to a remote repository using git push"
+    :count: 1
+
+"rebase":
+  :slice_and_dice:
+    :name: "Slice and Dice"
+    :desc: "Rebased local commits to updated upstream head with git rebase"
+    :count: 1
+
+"reflog":
+  :seamstress:
+    :name: "Seamstress"
+    :desc: "Investigated old branches using git reflog"
+    :count: 1
+
+"remote add":
+  :connected:
+    :name: "Connected"
+    :desc: "Added an external repository with git remote add"
+    :count: 1
+
+"reset":
+  :second_guess:
+    :name: "Second Guess"
+    :desc: "Changed the current HEAD state with git reset"
+    :count: 1
+
+"rm":
+  :fireball:
+    :name: "Fireball"
+    :desc: "Removed something with git rm"
+    :count: 1
+
+"shell":
+  :annex:
+    :name: "Annex"
+    :desc: "Loaded a restricted login shell for Git-only SSH access with git shell"
+    :count: 1
+
+"show":
+  :showoff:
+    :name: "Showoff"
+    :desc: "Displayed one or more objects (blobs trees tags and commits) with git show"
+    :count: 1
+
+"show-branch":
+  :forest_cartography:
+    :name: "Forest Cartography"
+    :desc: "Displayed a branch graph with git show-branch"
+    :count: 1
+
+"stash":
+  :hoarder:
+    :name: "Hoarder"
+    :desc: "Stashed local changes using git stash"
+    :count: 1
+
+"status":
+  :status_report:
+    :name: "Status Report"
+    :desc: "Viewed the working tree status with git status"
+    :count: 1
+
+"submodule add":
+  :sublet:
+    :name: "Sublet"
+    :desc: "Added a submodule with git submodule add"
+    :count: 1
+
+"submodule update":
+  :renovations:
+    :name: "Renovations"
+    :desc: "Updated one or more submodules with git submodule update"
+    :count: 1
+
+"svn":
+  :dinosaur:
+    :name: "Dinosaur"
+    :desc: "Streamed changes to svn with git svn"
+    :count: 1
+
+"tag":
+  :label_wizard:
+    :name: "Label Wizard"
+    :desc: "Created deleted or listed one or more tags with git tag"
+    :count: 1
+
+"whatchanged":
+  :historian:
+    :name: "Historian"
+    :desc: "Showed the difference each commit introduced with git whatchanged"
+    :count: 1
+---

@@ -11,27 +11,56 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121203003915) do
+ActiveRecord::Schema.define(:version => 20121206054934) do
+
+  create_table "command_histories", :force => true do |t|
+    t.integer  "count"
+    t.integer  "command_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "command_histories", ["command_id"], :name => "index_command_histories_on_command_id"
+  add_index "command_histories", ["user_id"], :name => "index_command_histories_on_user_id"
+
+  create_table "commands", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "completed_feats", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "feat_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "completed_feats", ["feat_id"], :name => "index_completed_feats_on_feat_id"
+  add_index "completed_feats", ["user_id"], :name => "index_completed_feats_on_user_id"
 
   create_table "feats", :force => true do |t|
     t.string   "name"
-    t.string   "description"
-    t.integer  "completed_count"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.text     "description"
+    t.integer  "command_id"
+    t.integer  "threshold"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
+
+  add_index "feats", ["command_id"], :name => "index_feats_on_command_id"
 
   create_table "users", :force => true do |t|
     t.integer  "uid"
     t.string   "provider"
     t.string   "nickname"
     t.string   "email"
-    t.integer  "gravatar_id"
     t.string   "token"
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
-    t.boolean  "authenticated", :default => false
     t.string   "gemkey"
+    t.boolean  "authenticated", :default => false
   end
 
 end

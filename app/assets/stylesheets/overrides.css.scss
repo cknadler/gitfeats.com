@@ -1,0 +1,23 @@
+// Place all the styles related to overriding Foundation here
+
+//
+// Top Bar Overrides
+//
+
+// List items
+.top-bar ul > li:not(.name):hover, .top-bar ul > li:not(.name).active {
+  background: none;
+}
+
+.top-bar ul > li:not(.name):hover a, .top-bar ul > li:not(.name).active a {
+  color: #63B0EA;
+}
+
+// Name items
+.top-bar ul > li.name:hover, .top-bar ul > li.name.active {
+  background: none;
+}
+
+.top-bar ul > li.name:hover a, .top-bar ul > li.name.active a {
+  color: #63B0EA;
+}

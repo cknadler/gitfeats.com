@@ -1,23 +1,4 @@
-// Place all the styles related to the public_pages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-
-.top-bar ul > li.has-button a {
-	padding-top:3px;
-}
-
-.top-bar ul > li:not(.name):hover, .top-bar ul > li:not(.name).active {
-  background: none;
-}
-
-.top-bar ul > li:not(.name):hover a, .top-bar ul > li:not(.name).active a {
-  color:#63B0EA;
-}
-
-.top-bar#name img {
-	padding-top:5px;
-}
+// Place all the styles related to the public_pages controller here
 
 span.prog_text {
 	float: right;

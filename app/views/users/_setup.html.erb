@@ -6,7 +6,21 @@
 
 <div class="row">
   <div class="twelve columns">
-    <h4 class="subheader">Setup</h4>
+    <h4 class="subheader">Your API Key</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="twelve columns">
+    <div class="panel">
+      <input type="text" onclick="javascript:select();" value="<%=@api_key%>"/>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="twelve columns">
+    <h4 class="subheader">Quick Setup</h4>
   </div>
 </div>
 
@@ -18,7 +32,7 @@
           
       <div class="row">
         <div class="twelve columns">
-          <input type="text" value="<%=@one_liner%>"/>
+          <input type="text" onclick="javascript:select();" value="<%=@one_liner%>"/>
         </div>
       </div>
 
@@ -27,7 +41,7 @@
 
       <div class="row">
         <div class="twelve mobile-three columns">
-          <input type="text" value="<%=@install_cmd%>"/>
+          <input type="text" onclick="javascript:select();" value="<%=@install_cmd%>"/>
         </div>
       </div>
 
@@ -35,7 +49,7 @@
 
       <div class="row">
         <div class="twelve mobile-three columns">
-          <input type="text" value="<%=@conf_cmd%>"/>
+          <input type="text" onclick="javascript:select();" value="<%=@conf_cmd%>"/>
         </div>
       </div>
 
@@ -44,7 +58,7 @@
 
       <div class="row">
         <div class="twelve mobile-three columns">
-          <input type="text" value="<%=@alias_cmd%>"/>
+          <input type="text" onclick="javascript:select();" value="<%=@alias_cmd%>"/>
         </div>
       </div>
     </div>

@@ -1,0 +1,18 @@
+// Place all the styles related to overriding Foundation here
+
+// Top Bar Overrides
+.top-bar ul > li.has-button a {
+  padding-top: 3px;
+}
+
+.top-bar ul > li:not(.name):hover, .top-bar ul > li:not(.name).active {
+  background: none;
+}
+
+.top-bar ul > li:not(.name):hover a, .top-bar ul > li:not(.name).active a {
+  color: #63B0EA;
+}
+
+.top-bar#name img {
+  padding-top: 5px;
+}

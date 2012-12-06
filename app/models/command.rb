@@ -10,4 +10,6 @@
 
 class Command < ActiveRecord::Base
   attr_accessible :name
+  has_many :feats
+  has_many :command_histories
 end

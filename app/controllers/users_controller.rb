@@ -11,7 +11,6 @@ class UsersController < ApplicationController
   end
 
   private
-
   def format_conf_command(key)
     "git config --global feats.key \"#{key}\""
   end

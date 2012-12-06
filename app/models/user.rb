@@ -2,7 +2,7 @@ require 'digest'
 class User < ActiveRecord::Base
   include Gravtastic
   has_gravatar
-
+  
   attr_accessible :email, :nickname, :provider, :token, :uid, :gemkey
   before_save :create_gemkey
   
@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
     nickname    = hash.fetch('info',{}).fetch('nickname')
     email       = hash.fetch('info',{}).fetch('email', nil)
     token       = hash.fetch('credentials', {}).fetch('token')
-
+    
     {
       :provider => provider,
       :token => token,

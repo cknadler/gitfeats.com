@@ -1,3 +1,4 @@
 class Feat < ActiveRecord::Base
-  attr_accessible :completed_count, :description, :name
+  belongs_to :command
+  attr_accessible :description, :name, :threshold
 end

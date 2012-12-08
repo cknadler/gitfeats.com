@@ -8,4 +8,5 @@
 /log/*.log
 /tmp
 
+# github api keys
 config/git_secret.yml

@@ -1,8 +1,13 @@
 class StatsController < ApplicationController
-#count - how many rows wanted
-#top - boolean - if you want to lower or higher end of the data
 
-  def commands (count, top)
+  def index
+
+  end
+  
+  #count - how many rows wanted
+  #top - boolean - if you want to lower or higher end of the data
+
+  def commands(count, top=nil)
     if top
       CommandHistory.order("count ASC").limit(count).uniq
     else
@@ -10,7 +15,7 @@ class StatsController < ApplicationController
     end
   end
   
-  def top_users ( count )
+  def top_users(count)
     if top
       CommandHistory.order("count ASC").limit(count).uniq
     else

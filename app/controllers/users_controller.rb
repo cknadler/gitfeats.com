@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @command_history = @user.command_histories
 
     @total = roundup(@feats.count, 3)
+    @github_url = "http://www.github.com/#{@user.nickname}" 
 
     # Setup data
     @api_key = "#{@user.nickname}-#{@user.gemkey}"
@@ -15,6 +16,23 @@ class UsersController < ApplicationController
     @alias_cmd = "echo 'alias git=git-feats' >> .bashrc"
     @one_liner = [@conf_cmd, @install_cmd, @alias_cmd].join(" && ") 
   end
+
+  def search 
+    @user = User.find_by_nickname(params[:query])
+
+    # if empty query, redirect them back. <~ there has to be a better way
+    if params[:query].empty?
+      redirect_to(:back)
+      
+    # else if the search for user fails, go back and tell them
+    elsif @user.nil?
+      redirect_to(:back, :notice => "Could not find user #{params[:query]}")
+
+    # else take them to the users page
+    else
+      redirect_to @user
+    end
+  end 
 
   private
 

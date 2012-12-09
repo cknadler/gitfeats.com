@@ -23,6 +23,15 @@
 
 <body>
   <%= render :partial => "shared/header" %>
+  <% if flash[:notice] %>
+  <div class="row">
+    <div class="alert-box alert">
+      <%= flash[:notice]%>
+    <a href="" class="close">&times;</a>
+  </div>
+  </div>
+  <% end %>
+
   <%= yield %>
   <%= render :partial => "shared/footer" %>
 </body>

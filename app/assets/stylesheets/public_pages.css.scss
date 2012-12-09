@@ -63,3 +63,27 @@ ul#social-buttons-list li {
 #main-description {
   margin-top: 30px;
 }
+
+div.allFeats a div.panel:hover {
+  border: solid 1px rgb(213, 208, 208);
+}
+
+section.search input{
+  height: 25px;
+  margin: 10px;
+}
+
+section.options ul.left li.divider {
+  margin-left: 5px;
+}
+
+section.search ul.left li input {
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+div.alert-box.alert {
+  margin-top: -10px;
+  margin-bottom: 30px;
+}

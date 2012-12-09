@@ -14,12 +14,25 @@
 
     <!-- Left Nav Section -->
     <% if logged_in? %>
-      <section>
+      <section class="search">
         <ul class="left">
           <li class="divider"></li>
           <li>
-            <%= link_to "stats", stats_path %>
+            <%= form_tag search_path do%>
+            <%= text_field_tag :query %>
           </li>
+          <li>
+            <%= image_submit_tag("search@2x.png") %>
+             <% end %>
+          </li>
+        </ul>
+      </section>
+      <section class="options">
+        <ul class="left">
+        <li class="divider"></li>
+        <li>
+             <%= link_to "stats", stats_path %>
+        </li>
         </ul>
       </section>
     <% end %>

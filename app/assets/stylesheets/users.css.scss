@@ -6,3 +6,12 @@ h3#no-feat-notice {
   margin: 0 auto;
   width: 60%;
 }
+
+li#featsTab a div.panel:hover{
+	color: #e6e6e6;
+	border: solid 1px rgb(213, 208, 208);
+}
+
+li#feedTab a div.panel:hover {
+	border: solid 1px rgb(213, 208, 208);
+}

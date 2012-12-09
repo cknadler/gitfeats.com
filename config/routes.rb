@@ -16,6 +16,12 @@ Gitfeats::Application.routes.draw do
 
   # Feats
   resources :feats, only: [:show, :index]
+  match '/feats', to: 'feats#index'
+
+  # Search
+
+  match '/search', to:'users#search'
+
 
   # API
   scope '/api' do

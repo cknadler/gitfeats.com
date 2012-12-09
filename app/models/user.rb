@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
     where(conditions).first
   end
 
+  def to_param
+    self.nickname.parameterize
+  end
+
   private
   
   def create_gemkey

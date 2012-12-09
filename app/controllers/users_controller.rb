@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by_nickname(params[:nickname])
 
     # Setup data
     @api_key = "#{@user.nickname}-#{@user.gemkey}"
@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def format_conf_command(key)
     "git config --global feats.key \"#{key}\""
   end

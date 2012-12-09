@@ -1,5 +1,8 @@
 Gitfeats::Application.routes.draw do
 
+  # Users
+  resources :users, only: [:show, :destroy]
+
   # Public Pages
   root            to: 'public_pages#home'
   match '/stats', to: 'public_pages#stats'
@@ -10,9 +13,6 @@ Gitfeats::Application.routes.draw do
   match '/auth/failure',          to: 'sessions#failure'
   match 'logout',                 to: 'sessions#destroy', :via => :delete
 
-  # Users
-  resources :users, only: [:show, :destroy]
-
   # Feats
   resources :feats, only: [:show, :index]
 
@@ -20,5 +20,8 @@ Gitfeats::Application.routes.draw do
   scope '/api' do
     match '/post_feats', to: 'api#post_feats', :via => :post
   end
+
+  # Vainity Routes
+  get ":nickname" => "users#show", as: :user
 
 end

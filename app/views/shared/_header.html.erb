@@ -1,13 +1,34 @@
 <div id="header" class="contain-to-grid">
+<div class="row">
   <nav class="top-bar">
+
+    <!-- Logo -->
     <ul>
-      <li class="name"><img src="/assets/git-feats_header.png"></li>
-      <li class="name"><h1><%= link_to "Git Feats", root_path %></h1></li>
-      <li class="toggle-topbar"><a href="#"></a></li>
+      <li class="name">
+        <img src="/assets/git-feats_header.png">
+      </li>
+      <li class="name">
+        <h1><%= link_to "Git Feats", root_path %></h1>
+      </li>
     </ul>
 
+    <!-- Left Nav Section -->
+    <% if logged_in? %>
+      <section>
+        <ul class="left">
+          <li class="divider"></li>
+          <li>
+            <%= link_to "stats", stats_path %>
+          </li>
+        </ul>
+      </section>
+    <% end %>
+
+    <!-- Right Nav Section -->
     <section>
       <ul class="right">
+
+        <!-- User is logged in -->
         <% if logged_in? %>
           <li class="avatar">
             <!-- This is a hack to get retina images from gravatar -->
@@ -21,6 +42,8 @@
           <li>
             <%= link_to "logout", logout_path, :method => :delete %>
           </li>
+
+        <!-- Not Logged in -->
         <% else %>
           <li>
             <%= link_to "Sign in with Github", login_path %>
@@ -29,4 +52,5 @@
       </ul>
     </section>
   </nav>
+</div>
 </div>

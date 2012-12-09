@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find(params[:id])
+
+    @user = User.find_by_nickname(params[:nickname])
     @feats = @user.completed_feats.reverse
     @allFeatCount = Feat.count
     @percent = ((@feats.count.to_f/@allFeatCount.to_f)*100).to_i
@@ -15,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def format_conf_command(key)
     "git config --global feats.key \"#{key}\""
   end

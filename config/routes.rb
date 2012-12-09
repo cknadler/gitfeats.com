@@ -1,18 +1,27 @@
 Gitfeats::Application.routes.draw do
 
-  root to: 'public_pages#home'
-  
-  match '/setup',                 to: 'public_pages#setup'
+  # Users
+  resources :users, only: [:show, :destroy]
 
+  # Public Pages
+  root            to: 'public_pages#home'
+  match '/stats', to: 'public_pages#stats'
+  match '/setup', to: 'public_pages#setup'
+
+  # Sessions
   get   'login',                  to: 'sessions#new'
   match '/auth/github/callback',  to: 'sessions#create'
   match '/auth/failure',          to: 'sessions#failure'
   match 'logout',                 to: 'sessions#destroy', :via => :delete
-  resources :users, only: [:show, :destroy]
 
+  # Feats
+  resources :feats, only: [:show, :index]
+
+  # API
   scope '/api' do
     match '/post_feats', to: 'api#post_feats', :via => :post
   end
 
-  resources :feats, only: [:show, :index]
+  # Vainity Routes
+  get ":nickname" => "users#show", as: :user
 end

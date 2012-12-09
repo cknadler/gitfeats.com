@@ -31,3 +31,20 @@ Gitfeats::Application.routes.draw do
   # Vainity Routes
   get ":nickname" => "users#show", as: :user
 end
+#== Route Map
+# Generated on 09 Dec 2012 11:16
+#
+#                      DELETE /users/:id(.:format)            users#destroy
+#                 root        /                               public_pages#home
+#                stats        /stats(.:format)                public_pages#stats
+#                setup        /setup(.:format)                public_pages#setup
+#                login GET    /login(.:format)                sessions#new
+# auth_github_callback        /auth/github/callback(.:format) sessions#create
+#         auth_failure        /auth/failure(.:format)         sessions#failure
+#               logout DELETE /logout(.:format)               sessions#destroy
+#                feats GET    /feats(.:format)                feats#index
+#                 feat GET    /feats/:id(.:format)            feats#show
+#                             /feats(.:format)                feats#index
+#               search        /search(.:format)               users#search
+#           post_feats POST   /api/post_feats(.:format)       api#post_feats
+#                 user GET    /:nickname(.:format)            users#show

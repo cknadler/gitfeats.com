@@ -20,10 +20,13 @@ class UsersController < ApplicationController
   def search 
     @user = User.find_by_nickname(params[:query])
 
+    if params[:query].nil?
+      redirect_to :root
+
     # if empty query, redirect them back. <~ there has to be a better way
-    if params[:query].empty?
+    elsif params[:query].empty?
       redirect_to(:back)
-      
+
     # else if the search for user fails, go back and tell them
     elsif @user.nil?
       redirect_to(:back, :notice => "Could not find user #{params[:query]}")

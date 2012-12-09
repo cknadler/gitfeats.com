@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
   def show
-
     @user = User.find_by_nickname(params[:nickname])
     @feats = @user.completed_feats.reverse
-    @allFeatCount = Feat.count
-    @percent = ((@feats.count.to_f/@allFeatCount.to_f)*100).to_i
+    @all_feat_count = Feat.count
+    @percent = ((@feats.count.to_f/@all_feat_count.to_f)*100).to_i
     @command_history = @user.command_histories
 
     # Setup data

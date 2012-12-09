@@ -1,19 +1,21 @@
 <div class="row">    
   <div class="nine columns push-three">
-    <% if check_user(@user.id) && @feats.nil? %>  
+    <% if check_user(@user.id) && @feats.empty? %>  
       <%= render 'setup' %>
     <% else %>
       <%= render 'feeds' %>
     <% end %>
   </div>
     
-    
-<div class="three columns pull-nine">
+  <div class="three columns pull-nine">
     <%= link_to image_tag(@user.gravatar_url(size: 300)), @user, class: "th" %>
     <h3><%= @user.nickname %></h3>
     <h5 class="subheader">Number of feats: <%= @feats.count %></h5>
-   		<div class="radius progress ten">
-   			<span class="meter" style="width:<%= @percent %>%;"></span>
-   	   	</div>
-   	   	<span class="prog_text"><h6> <%= @feats.count %>/<%= @allFeatCount %></h6></span>
+    <div class="radius progress ten">
+      <span class="meter" style="width:<%= @percent %>%;"></span>
+    </div>
+    <span class="prog_text">
+      <h6><%= @feats.count %>/<%= @all_feat_count %></h6>
+    </span>
+  </div>
 </div>

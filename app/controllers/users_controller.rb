@@ -6,6 +6,8 @@ class UsersController < ApplicationController
     @percent = ((@feats.count.to_f/@all_feat_count.to_f)*100).to_i
     @command_history = @user.command_histories
 
+    @total = roundup(@feats.count, 3)
+
     # Setup data
     @api_key = "#{@user.nickname}-#{@user.gemkey}"
     @install_cmd = "gem install git-feats"
@@ -15,6 +17,11 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def roundup (num, ceiling)
+    return num if num % ceiling  == 0
+    return num + ceiling - (num % ceiling)
+  end
 
   def format_conf_command(key)
     "git config --global feats.key \"#{key}\""

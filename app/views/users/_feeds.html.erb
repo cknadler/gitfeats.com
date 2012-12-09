@@ -8,11 +8,6 @@
 
   <!-- Feed Tab -->
   <li class="active" id="feedTab">
-    Feed content. Stubbed for now.
-  </li>
-
-  <!-- Feats Tab -->
-  <li id="featsTab">
     <% @feats.each do |cfeat| %>
       <div class="panel">
         <div class="row">
@@ -26,6 +21,25 @@
         </div>
       </div>
     <% end %>
+  </li>
+
+  <!-- Feats Tab -->
+  <li id="featsTab">
+  	    <% @total.times do |index| %>
+        		<% if index%3 == 0 %>
+        			<div class="row">
+        		<% end %>
+        		<div class="four columns">
+        		<% if index < @feats.count %>
+        			<div class="panel">
+						<img src="/assets/brick_mortar.png">
+					</div>
+	       		<% end %>
+        		</div>
+        		<% if index%3 == 2 %>
+        			</div>
+        		<% end %>
+        <% end %>
   </li>
 
   <!-- Command Stats Tab -->

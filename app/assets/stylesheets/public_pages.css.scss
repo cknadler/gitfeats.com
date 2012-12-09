@@ -26,9 +26,9 @@ span.prog_text {
   padding: 1px 5px 30px; 
   box-shadow: 0px 2px 2px #888888;
 
-  // Hack to absorb the header margin 
-  // only on the home page
-  margin-top: -40px;
+  // Hack to absorb the header padding
+  // Only used on the public_pages#home view
+  margin-top: -30px;
 }
 
 #banner a { 

@@ -5,6 +5,39 @@
 </dl>
 <ul class="tabs-content">
   <li class="active" id="feedTab">Feed content.</li>
-  <li id="featsTab">List of all completed feats.</li>
-  <li id="gitStatsTab">List of all git stats.</li>
+  <li id="featsTab">
+  	<% @feats.each do |cfeat| %>
+  		<div class="panel">
+  			<div class="row">
+  				 <div class="three columns">
+  				 	<img src="http://placehold.it/100x100&text=[img]" />
+   				</div>
+   				<div class="nine columns">
+   					<h4><%= cfeat.feat.name %> </h4>
+   					<h5 class="subheader"> <%= cfeat.feat.description %></h5>
+   				</div>
+  			</div>
+  		</div>
+  	<% end %>
+  </li>
+  <li id="gitStatsTab">
+ 		<table class="twelve">
+ 			<thead>
+    			<tr>
+      				<th>Command</th>
+      				<th>Count</th>
+    			</tr>
+  			</thead>
+  			<tbody>
+  		<% @command_history.each do |command_his| %>
+    			<tr>
+      				<td><%= command_his.command.name %></td>
+      				<td><%= command_his.count %></td>
+    			</tr>
+    	 	<% end %>
+    		</tbody>
+ 		</table>
+
+
+  </li>
 </ul>

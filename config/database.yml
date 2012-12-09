@@ -12,8 +12,6 @@ test:
   adapter: postgresql
   encoding: unicode
   database: gitfeats_test
-  username: pg
-  password: 
   pool: 5
 
 production:

@@ -13,5 +13,8 @@
 
 class Feat < ActiveRecord::Base
   belongs_to :command
+  has_many :completed_feats
+
   attr_accessible :description, :name, :threshold
+
 end

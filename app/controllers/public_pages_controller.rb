@@ -9,7 +9,7 @@ class PublicPagesController < ApplicationController
   def stats
     @top_commands = []
     @top_command_count = 0
-    tmp = get_commands(25, true)
+    tmp = get_commands(10, true)
     tmp.each do |x|
       t = {}
       t[:id] = x.id

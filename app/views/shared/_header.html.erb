@@ -8,7 +8,11 @@
         <img src="/assets/git-feats_header.png">
       </li>
       <li class="name">
-        <h1><%= link_to "Git Feats", root_path %></h1>
+        <% if logged_in? %>
+          <h1><%= link_to "Git Feats", stats_path %></h1>
+        <% else %>
+          <h1><%= link_to "Git Feats", root_path %></h1>
+        <% end %>
       </li>
     </ul>
 

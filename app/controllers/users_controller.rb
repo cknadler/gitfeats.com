@@ -10,11 +10,12 @@ class UsersController < ApplicationController
     @github_url = "http://www.github.com/#{@user.nickname}" 
 
     # Setup data
-    @api_key = "#{@user.nickname}-#{@user.gemkey}"
+    @api_key = "#{@user.gemkey}"
     @install_cmd = "gem install git-feats"
-    @conf_cmd = format_conf_command(@api_key)
+    @key_cmd = format_key_conf_command(@api_key)
+    @user_cmd = format_user_conf_command(@user.nickname)
     @alias_cmd = "echo 'alias git=git-feats' >> .bashrc"
-    @one_liner = [@conf_cmd, @install_cmd, @alias_cmd].join(" && ") 
+    @one_liner = [@user_cmd, @key_cmd, @install_cmd, @alias_cmd].join(" && ") 
   end
 
   def search 
@@ -44,7 +45,11 @@ class UsersController < ApplicationController
     return num + ceiling - (num % ceiling)
   end
 
-  def format_conf_command(key)
-    "git config --global feats.key \"#{key}\""
+  def format_key_conf_command(key)
+    "git config --global feats.key #{key}"
+  end
+
+  def format_user_conf_command(user)
+    "git config --global github.user #{user}"
   end
 end

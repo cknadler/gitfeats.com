@@ -1,11 +1,12 @@
 
 <%if @feats.empty? %>
-<div class="row">
-  <div class="twelve columns">
-    <h3 id="no-feat-notice">You haven't completed any feats!</h3>
+  <div class="row">
+    <div class="twelve columns">
+      <h3 id="no-feat-notice">You haven't completed any feats!</h3>
+    </div>
   </div>
-</div>
 <% end %>
+
 <div class="row">
   <div class="twelve columns">
     <h4 class="subheader">Your API Key</h4>
@@ -46,12 +47,20 @@
           <input type="text" onclick="javascript:select();" value="<%=@install_cmd%>"/>
         </div>
       </div>
+      
+      <h6>Add your Github username</h6>
+
+      <div class="row">
+        <div class="twelve mobile-three columns">
+          <input type="text" onclick="javascript:select();" value="<%=@user_cmd%>"/>
+        </div>
+      </div>
 
       <h6>Add your API key</h6>
 
       <div class="row">
         <div class="twelve mobile-three columns">
-          <input type="text" onclick="javascript:select();" value="<%=@conf_cmd%>"/>
+          <input type="text" onclick="javascript:select();" value="<%=@key_cmd%>"/>
         </div>
       </div>
 

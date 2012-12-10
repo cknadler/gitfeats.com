@@ -2,11 +2,11 @@
 
           <div class="six columns">
           	<div class="panel">
-            <img src="/assets/brick_mortar.png">
+            <img src="/assets/feats/<%= @feat.filename %>" />
        		</div>
           <% if @feat.owned_by_user(@current_user, @feat) %>
        		 <div class="panel callout radius">
-       		   <h5><center>Completed on 12/31/12</center></h5>
+       		   <h5><center>Completed on <%= @feat.owned_by_user(@current_user, @feat).created_at.strftime("%b %d, %Y") %></center></h5>
 			     </div>
          <% end %>
           </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121206054934) do
+ActiveRecord::Schema.define(:version => 20121208115734) do
 
   create_table "command_histories", :force => true do |t|
     t.integer  "count"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20121206054934) do
     t.integer  "threshold"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "filename"
   end
 
   add_index "feats", ["command_id"], :name => "index_feats_on_command_id"

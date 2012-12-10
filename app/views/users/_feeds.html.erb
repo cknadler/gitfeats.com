@@ -2,6 +2,9 @@
   <dd class="active"><a href="#feed">Feed</a></dd>
   <dd><a href="#feats">Feats</a></dd>
   <dd><a href="#gitStats">Git Stats</a></dd>
+  <% if @current_user == @user %>
+  <dd><a href="#setup">Setup</a></dd>
+  <% end %>
 </dl>
 
 <ul class="tabs-content">
@@ -13,7 +16,7 @@
       <div class="panel">
         <div class="row">
           <div class="three columns">
-            <img src="http://placehold.it/100x100&text=[img]" />
+            <img src="/assets/feats/<%= cfeat.feat.filename %>" />
           </div>
           <div class="nine columns">
             <h4><%= cfeat.feat.name %> </h4>
@@ -35,7 +38,7 @@
         		<% if index < @feats.count %>
         			<%= link_to(@feats[index].feat) do %>
   						<div class="panel">
-        			 	<%= image_tag("brick_mortar.png") %>
+        			 	<img src="/assets/feats/<%= @feats[index].feat.filename %>" />
         				</div>
 					<% end %>
 	       		<% end %>
@@ -65,4 +68,11 @@
     </tbody>
     </table>
   </li>
+
+  <!-- Command Setup Tab -->
+  <% if @current_user == @user %>
+  <li id="setupTab">
+    <%= render 'setup' %>
+  </li>
+<% end %>
 </ul>

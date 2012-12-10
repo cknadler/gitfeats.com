@@ -1,16 +1,16 @@
 <div class="row">    
   <div class="nine columns push-three">
-    <% if check_user(@user.id) && @feats.empty? %>  
-      <%= render 'setup' %>
-    <% else %>
+    <% if !@feats.empty? %>  
       <%= render 'feeds' %>
+    <% else %>
+      <%= render 'empty' %>
     <% end %>
   </div>
     
   <div class="three columns pull-nine">
     <%= link_to image_tag(@user.gravatar_url(size: 300)), @user, class: "th" %>
     <h3><%= @user.nickname %></h3>
-    <h6 class="subheader">Joined on <%= @user.created_at.strftime("%b %d,%Y") %><h6>
+    <h6 class="subheader">Joined on <%= @user.created_at.strftime("%b %d, %Y") %><h6>
     <h6 class="subheader"><a href="<%=@github_url%>"> View on Github </a><h6>
     <hr/>
 

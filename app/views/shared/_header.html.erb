@@ -19,7 +19,7 @@
           <li class="divider"></li>
           <li>
             <%= form_tag search_path do%>
-            <%= text_field_tag :query %>
+            <%= text_field_tag :query, nil, :placeholder => "Find User" %>
           </li>
           <li>
             <%= image_submit_tag("search@2x.png") %>
@@ -32,6 +32,9 @@
         <li class="divider"></li>
         <li>
              <%= link_to "stats", stats_path %>
+        </li>
+         <li>
+           <%= link_to "feats", feats_path %>
         </li>
         </ul>
       </section>

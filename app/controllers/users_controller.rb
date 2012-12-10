@@ -18,8 +18,8 @@ class UsersController < ApplicationController
   end
 
   def search 
-    @user = User.find_by_nickname(params[:query])
-
+    @user = User.find_by_nickname(params[:query].downcase)
+    
     if params[:query].nil?
       redirect_to :root
 

@@ -15,12 +15,12 @@ class CompletedFeat < ActiveRecord::Base
   # attr_accessible :title, :body
 
 def self.users_by_feats_completed(count, top)
- users = User.all.sort_by { |x| x.completed_feats.count }
- if top
-	users.last(count)
- else
-	users.first(count)
- end
+  users = User.all.sort_by { |x| x.completed_feats.count }
+  if top
+    users.last(count)
+  else
+    users.first(count)
+  end
 end
 
 def self.feats_by_completion_number(count, top)

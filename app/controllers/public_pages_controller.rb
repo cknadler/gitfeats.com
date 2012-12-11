@@ -1,15 +1,9 @@
 class PublicPagesController < ApplicationController
 
-  def home
-    if logged_in?
-      render 'public_pages/stats'
-    end
-  end
-  
   def stats
   
     #for random feat
-      @random_feat = Feat.all.sample(1).first
+    @random_feat = Feat.all.sample(1).first
     
     #for most recent completed feat to display
     tmp = CompletedFeat.order("created_at DESC").limit(1)
@@ -50,10 +44,10 @@ class PublicPagesController < ApplicationController
   #count - how many rows wanted
   #top - boolean - if you want to lower or higher end of the data
   def get_commands(count, top=true)
-      CommandHistory.commands_by_run_number(count, top)
+    CommandHistory.commands_by_run_number(count, top)
   end
   
   def get_users(count, top=true)
-      CompletedFeat.users_by_feats_completed(count, top)
+    CompletedFeat.users_by_feats_completed(count, top)
   end
 end

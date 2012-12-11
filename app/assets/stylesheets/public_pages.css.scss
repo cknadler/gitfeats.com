@@ -9,7 +9,6 @@ span.prog_text {
   font-size: 72px; 
   color: #fff; 
   padding-top: 90px; 
-  padding-left: 5px; 
   font-weight: normal;
 }
 
@@ -35,6 +34,15 @@ span.prog_text {
   margin-top: 80px; 
   padding-left: 60px; 
   padding-right: 60px;
+}
+
+#banner div.seven.columns {
+ padding-left: 0px;
+}
+
+#banner img { 
+ padding-top: 104px; 
+ padding-left: 13px;
 }
 
 #banner .button { 

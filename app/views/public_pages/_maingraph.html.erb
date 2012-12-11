@@ -1,10 +1,12 @@
 <style>
   body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  }
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+    text-align: right;
+      }
 
   .axis text {
     font: 15px sans-serif;
+    text-align: right;
   }
 
   .axis path,
@@ -21,28 +23,33 @@
 
   .x.axis path {
     display: none;
+    text-align: right;
+  }
+
+  g.x.axis text {
+    text-align: right;
   }
 
   label {
     position: absolute;
     top: 10px;
     right: 10px;
+    text-align: right;
   }
 </style>
 
   <div class="twelve columns">
-  <label><input type="checkbox"> Sort values</label>
     <script>
       var data = <%= raw @top_commands.to_json %>;
       var max_command = <%= raw @top_command_count.to_json %>;
       var num_commands = <%= raw @top_commands.count.to_json %>;
 
-      var margin = {top: 20, right: 20, bottom: 30, left: 40},
-          width = 500 - margin.left - margin.right,
+      var margin = {top: 20, right: 20, bottom: 100, left: 40},
+          width = 700 - margin.left - margin.right,
           height = 400 - margin.top - margin.bottom;
 
       var x = d3.scale.ordinal()
-          .rangeRoundBands([0, width], .1, 1);
+          .rangeRoundBands([0, width], .1, .5);
 
       var y = d3.scale.linear()
           .range([height, 0]);
@@ -50,13 +57,13 @@
       var xAxis = d3.svg.axis()
           .scale(x)
           .orient("bottom")
-          .tickPadding(5);
+          .tickPadding(35);
 
       var yAxis = d3.svg.axis()
           .scale(y)
           .orient("left");
 
-      var svg = d3.select("body").append("svg")
+      var svg = d3.select("div.twelve.columns").append("svg")
           .attr("width", width + margin.left + margin.right)
           .attr("height", height + margin.top + margin.bottom)
         .append("g")
@@ -90,6 +97,11 @@
           .attr("height", function(d) { return height - y(d.count); });
 
       d3.select("input").on("change", change);
+
+      svg.selectAll(".x.axis text")  // select all the text elements for the xaxis
+          .attr("transform", function(d) {
+             return "translate(" + this.getBBox().height*-2 + "," + this.getBBox().height + ")rotate(-45)";
+      });
 
       var sortTimeout = setTimeout(function() {
         d3.select("input").property("checked", true).each(change);

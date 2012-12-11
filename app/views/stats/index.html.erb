@@ -3,21 +3,22 @@
     <div id="top-users-tag" class="three panel columns">
     <h5 class="hide-for-small"> Top Users<hr/></h5>
       <div class="row">
-          <% @top_users.each do |top_user| %>
-            <% user = User.find(top_user[:id]) %>
-	          <div class="four columns">
-		          <center><%= link_to image_tag(user.gravatar_url(size: 140),
-		          height: 50, width: 50, class: "rounded"), user %></center>
-	          </div>
-	          <div class="eight columns">
-		          <h4>
-		            <%= link_to user.nickname, user %>
-		          </h4>
-		          <h5 class="subheader">
-		          	<%= top_user[:feat_count].to_s + " feats" %>
-		          </h5>
-	          </div>  <!-- End Graph --> 
-          <% end %>
+        <% @top_users.each do |top_user| %>
+          <% user = User.find(top_user[:id]) %>
+          <div class="four columns">
+            <center><%= link_to image_tag(user.gravatar_url(size: 140),
+            height: 50, width: 50, class: "rounded"), user %></center>
+          </div>
+          <div class="eight columns">
+            <h4>
+              <%= link_to user.nickname, user %>
+            </h4>
+            <h5 class="subheader">
+                  <%= top_user[:feat_count].to_s + " feats" %>
+            </h5>
+          </div>
+        <% end %>
+        <!-- End Graph --> 
       </div>
     </div>
   <!-- End Top Users -->

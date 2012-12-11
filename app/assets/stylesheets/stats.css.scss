@@ -8,12 +8,13 @@
 }
 
 .bar {
-  fill: steelblue;
+  fill: #2BA6CB;
   fill-opacity: .9;
 }
 
 .x.axis path {
   display: none;
+  text-align: right;
 }
 
 label {

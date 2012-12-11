@@ -8,10 +8,22 @@ h3#no-feat-notice {
 }
 
 li#featsTab a div.panel:hover{
-	color: #e6e6e6;
-	border: solid 1px rgb(213, 208, 208);
+  color: #e6e6e6;
+  border: solid 1px rgb(213, 208, 208);
 }
 
 li#feedTab a div.panel:hover {
-	border: solid 1px rgb(213, 208, 208);
+  border: solid 1px rgb(213, 208, 208);
+}
+
+#feedTab .subheader {
+  margin-top: -5px;
+}
+
+#feedTab .timestamp {
+  margin-top: -10px;
+}
+
+#feedTab img {
+  margin-left: 24px;
 }

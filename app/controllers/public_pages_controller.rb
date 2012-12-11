@@ -7,6 +7,22 @@ class PublicPagesController < ApplicationController
   end
   
   def stats
+  
+    #for random feat
+      @random_feat = Feat.all.sample(1).first
+    
+    #for most recent completed feat to display
+    tmp = CompletedFeat.order("created_at DESC").limit(1)
+    if tmp.first
+      @latest_feat = Feat.find(tmp.first.feat_id)
+      @latest_feat_user = User.find(tmp.first.user_id)
+    end
+    
+    #for completed feats progress bar
+    @completed_feats_count = CompletedFeat.count
+    @total_feats_count = User.count * Feat.count
+    @percent = ((@completed_feats_count.to_f/@total_feats_count.to_f)*100).to_i
+  
     @top_commands = []
     @top_command_count = 0
     tmp = get_commands(10, true)
@@ -20,7 +36,7 @@ class PublicPagesController < ApplicationController
     end
     
     @top_users = []
-    tmp = get_users(10, true)
+    tmp = get_users(7, true)
     tmp.each do |x|
       t = {}
       t[:id] = x.id
@@ -28,6 +44,7 @@ class PublicPagesController < ApplicationController
       t[:feat_count] = x.completed_feats.count
       @top_users.push(t)
     end
+    @top_users.reverse!
   end
   
   #count - how many rows wanted

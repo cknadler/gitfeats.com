@@ -20,6 +20,7 @@ yaml.each do |command, feats|
   feats.each do |feat, value|
     tmp = Feat.find_or_create_by_name(value[:name])
     tmp.description = value[:desc]
+    tmp.filename = "#{feat}.png"
     tmp.command_id = c.id
     tmp.threshold = value[:count]
     tmp.save

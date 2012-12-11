@@ -3,6 +3,21 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.9'
 gem 'pg'
 gem 'thin'
+gem 'sqlite3'
+gem 'jquery-rails'
+gem 'execjs'
+gem 'libv8', '~> 3.11.8'
+gem 'therubyracer'
+
+# OAuth
+gem 'omniauth'
+gem 'omniauth-github'
+
+# Gravatars
+gem 'gravtastic'
+
+# Style
+gem 'zurb-foundation', '~> 3.2.2'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -13,20 +28,15 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-# OAuth
-gem 'omniauth'
-gem 'omniauth-github'
-
-gem 'zurb-foundation', '~> 3.2.2'
-gem 'jquery-rails'
-
-gem 'gravtastic'
-
-gem 'execjs'
-gem 'libv8', '~> 3.11.8'
-gem 'therubyracer'
-
+# Gems used only in development
 group :development do
+  # General debugger
   gem 'debugger'
+
+  # Model Annotation
   gem 'annotate'
+
+  # Better errors
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end

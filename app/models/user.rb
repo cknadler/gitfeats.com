@@ -20,6 +20,9 @@ class User < ActiveRecord::Base
   include Gravtastic
   has_gravatar
   
+  has_many :completed_feats
+  has_many :command_histories
+
   attr_accessible :email, :nickname, :provider, :token, :uid, :gemkey
   before_save :create_gemkey
   
@@ -30,6 +33,10 @@ class User < ActiveRecord::Base
   def self.find_by_auth_hash(hash)
     conditions = extract_info(hash).slice(:provider, :uid)
     where(conditions).first
+  end
+
+  def to_param
+    self.nickname.parameterize
   end
 
   private

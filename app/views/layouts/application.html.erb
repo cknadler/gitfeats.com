@@ -11,6 +11,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title><%= content_for?(:title) ? yield(:title) : "GitFeats" %></title>
+  
+  <%= favicon_link_tag '/assets/favicon.png' %>
 
   <!-- Included CSS Files -->
   <%= stylesheet_link_tag    "application" %>
@@ -23,6 +25,15 @@
 
 <body>
   <%= render :partial => "shared/header" %>
+  <% if flash[:notice] %>
+  <div class="row">
+    <div class="alert-box alert">
+      <%= flash[:notice]%>
+    <a href="" class="close">&times;</a>
+  </div>
+  </div>
+  <% end %>
+
   <%= yield %>
   <%= render :partial => "shared/footer" %>
 </body>

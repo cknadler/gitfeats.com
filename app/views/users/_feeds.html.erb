@@ -2,9 +2,77 @@
   <dd class="active"><a href="#feed">Feed</a></dd>
   <dd><a href="#feats">Feats</a></dd>
   <dd><a href="#gitStats">Git Stats</a></dd>
+  <% if @current_user == @user %>
+  <dd><a href="#setup">Setup</a></dd>
+  <% end %>
 </dl>
+
 <ul class="tabs-content">
-  <li class="active" id="feedTab">Feed content.</li>
-  <li id="featsTab">List of all completed feats.</li>
-  <li id="gitStatsTab">List of all git stats.</li>
+
+  <!-- Feed Tab -->
+  <li class="active" id="feedTab">
+    <% @feats.each do |cfeat| %>
+    <%= link_to(cfeat.feat) do %>
+      <div class="panel">
+        <div class="row">
+          <div class="three columns">
+            <img src="/assets/feats/<%= cfeat.feat.filename %>" />
+          </div>
+          <div class="nine columns">
+            <h4><%= cfeat.feat.name %> </h4>
+            <h5 class="subheader"> <%= cfeat.feat.description %></h5>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+  </li>
+
+  <!-- Feats Tab -->
+  <li id="featsTab">
+  	    <% @total.times do |index| %>
+        		<% if index%3 == 0 %>
+        			<div class="row">
+        		<% end %>
+        		<div class="four columns">
+        		<% if index < @feats.count %>
+        			<%= link_to(@feats[index].feat) do %>
+  						<div class="panel">
+        			 	<img src="/assets/feats/<%= @feats[index].feat.filename %>" />
+        				</div>
+					<% end %>
+	       		<% end %>
+        		</div>
+        		<% if index%3 == 2 %>
+        			</div>
+        		<% end %>
+        <% end %>
+  </li>
+
+  <!-- Command Stats Tab -->
+  <li id="gitStatsTab">
+    <table class="twelve">
+      <thead>
+      <tr>
+        <th>Command</th>
+        <th>Count</th>
+      </tr>
+      </thead>
+      <tbody>
+    <% @command_history.each do |command_his| %>
+      <tr>
+        <td><%= command_his.command.name %></td>
+        <td><%= command_his.count %></td>
+      </tr>
+    <% end %>
+    </tbody>
+    </table>
+  </li>
+
+  <!-- Command Setup Tab -->
+  <% if @current_user == @user %>
+  <li id="setupTab">
+    <%= render 'setup' %>
+  </li>
+<% end %>
 </ul>

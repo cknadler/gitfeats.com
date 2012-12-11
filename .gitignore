@@ -8,4 +8,8 @@
 /log/*.log
 /tmp
 
+# For Jenny ;D
+.DS_STORE
+
+# github api keys
 config/git_secret.yml

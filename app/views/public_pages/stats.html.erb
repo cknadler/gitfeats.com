@@ -1,11 +1,10 @@
   <div class="row">
 
+  <!-- Top Users -->
     <div id="top-users-tag" class="three panel columns">
     <h5 class="hide-for-small"> Top Users<hr/></h5>
-  
       <div class="row">
         <% if @top_users %>
-
 	      <div class="four columns">
 		      <center><%= link_to image_tag(User.find(@top_users.first[:id]).gravatar_url(size: 140),
 		      height: 50, width: 50, class: "rounded"), 
@@ -25,33 +24,70 @@
         </center></div>
         <% end %>
       </div>
-      
     </div>
+  <!-- End Top Users -->
 
+  
+  <!-- Progress Bar -->
+  <div class="nine columns">
+  <div class="panel">
+    <h5 class="subheader">
+      Total Number of Completed Feats: <%= @completed_feats_count %>
+    </h5>
+    <div class="radius progress ten">
+      <span class="meter" style="width:<%= @percent %>%;"></span>
+    </div>
+    <span class="prog_text">
+      <h6><%= @completed_feats_count %>/<%= @total_feats_count %></h6>
+    </span>
+  </div>
+  </div>
+  <!-- End Progress Bar -->
+    
+  <!-- Graph -->    
     <div class="nine columns">
       <div class="panel" >
         <div class="row">
           <%= render :partial => "maingraph" %>
         </div>
       </div>
-
+  <!-- End Graph --> 
+     
       <div class="row">
         <div class="six columns">
           <div class="panel">
-            <h5>Subheader</h5>
-            <p>Sed sit amet posuere erat. Quisque in ipsum non augue euismod dapibus non et eros.</p>
-            <a href="#" class="small button">Link</a>
+            <h5>Most Recent Command</h5>
+            <div class="row">
+            <div class="twelve columns">
+              <% if @latest_feat %>
+	            <div class="four columns">
+		            <img src="/assets/feats/<%= @latest_feat.first.filename %>" />
+	            </div>
+	            <div class="eight columns">
+		            <h5 class="subheader">
+		            	<%= @latest_feat.description %>
+		            </h5>
+	            </div>
+              <% else %>
+              <div class="twelve columns"><center>
+                 <h5 class="subheader"> No Feats Have Been Completed</h5>
+              </center></div>
+              <% end %>
+            </div>
+            </div>
+        
           </div>
         </div>
 
+        
+      <div class="row">
         <div class="six columns">
           <div class="panel">
-            <h5>Subheader</h5>
-            <p>Sed sit amet posuere erat. Quisque in ipsum non augue euismod dapibus non et eros.</p>
-            <a href="#" class="small button">Link</a>
+            <h5>Achieved Said Command</h5>
+            
           </div>
         </div>
       </div>
     </div>
 
-  </div>
+  </div> 

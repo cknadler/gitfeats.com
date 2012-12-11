@@ -30,23 +30,23 @@
 
   <!-- Feats Tab -->
   <li id="featsTab">
-  	    <% @total.times do |index| %>
-        		<% if index%3 == 0 %>
-        			<div class="row">
-        		<% end %>
-        		<div class="four columns">
-        		<% if index < @feats.count %>
-        			<%= link_to(@feats[index].feat) do %>
-  						<div class="panel">
-        			 	<img src="/assets/feats/<%= @feats[index].feat.filename %>" />
-        				</div>
-					<% end %>
-	       		<% end %>
-        		</div>
-        		<% if index%3 == 2 %>
-        			</div>
-        		<% end %>
+    <% @total.times do |index| %>
+      <% if index % 3 == 0 %>
+        <div class="row">
+      <% end %>
+      <div class="four columns">
+      <% if index < @feats.count %>
+        <%= link_to(@feats[index].feat) do %>
+          <div class="panel">
+            <img src="/assets/feats/<%= @feats[index].feat.filename %>" />
+          </div>
         <% end %>
+      <% end %>
+      </div>
+      <% if index % 3 == 2 %>
+        </div>
+      <% end %>
+    <% end %>
   </li>
 
   <!-- Command Stats Tab -->

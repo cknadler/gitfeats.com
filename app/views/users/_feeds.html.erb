@@ -3,27 +3,30 @@
   <dd><a href="#feats">Feats</a></dd>
   <dd><a href="#gitStats">Git Stats</a></dd>
   <% if @current_user == @user %>
-  <dd><a href="#setup">Setup</a></dd>
+    <dd><a href="#setup">Setup</a></dd>
   <% end %>
 </dl>
 
 <ul class="tabs-content">
 
   <!-- Feed Tab -->
-  <li class="active" id="feedTab">
+  <li class="active" id="feed-tab">
     <% @feats.each do |cfeat| %>
-    <%= link_to(cfeat.feat) do %>
-      <div class="panel">
-        <div class="row">
-          <div class="three columns">
-            <img src="/assets/feats/<%= cfeat.feat.filename %>" />
-          </div>
-          <div class="nine columns">
-            <h4><%= cfeat.feat.name %> </h4>
-            <h5 class="subheader"> <%= cfeat.feat.description %></h5>
+      <%= link_to(cfeat.feat) do %>
+        <div class="panel">
+          <div class="row">
+            <div class="three columns">
+              <img src="/assets/feats/<%= cfeat.feat.filename %>" width="108" height="108" />
+            </div>
+            <div class="nine columns">
+              <h4><%= cfeat.feat.name %></h4>
+              <h6 class="subheader timestamp">
+                <%= cfeat.feat.created_at.strftime("%b %d, %Y") %>
+              </h6>
+              <h5 class="subheader"><%= cfeat.feat.description %></h5>
+            </div>
           </div>
         </div>
-      </div>
       <% end %>
     <% end %>
   </li>
@@ -71,8 +74,8 @@
 
   <!-- Command Setup Tab -->
   <% if @current_user == @user %>
-  <li id="setupTab">
-    <%= render 'setup' %>
-  </li>
-<% end %>
+    <li id="setupTab">
+      <%= render 'setup' %>
+    </li>
+  <% end %>
 </ul>

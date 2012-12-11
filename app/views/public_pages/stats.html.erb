@@ -1,25 +1,31 @@
   <div class="row">
 
-    <div class="three panel columns">
-      <img src="http://placehold.it/500x500&text=Image">
-
-      <h4>Header</h4>
-
-      <p>Fusce ullamcorper mauris in eros dignissim molestie posuere felis blandit. Aliquam erat volutpat. Mauris ultricies posuere vehicula. Sed sit amet posuere erat. Quisque in ipsum non augue euismod dapibus non et eros.</p><hr>
-
+    <div id="top-users-tag" class="three panel columns">
+    <h5 class="hide-for-small"> Top Users<hr/></h5>
+  
       <div class="row">
-        <div class="four columns">
-        <a href="#" class="small button">Link</a>
-        </div>
+        <% if @top_users %>
 
-        <div class="four columns">
-        <a href="#" class="small button">Link</a>
-        </div>
-
-        <div class="four columns">
-        <a href="#" class="small button">Link</a>
-        </div>
+	      <div class="four columns">
+		      <center><%= link_to image_tag(User.find(@top_users.first[:id]).gravatar_url(size: 140),
+		      height: 50, width: 50, class: "rounded"), 
+		      User.find(@top_users.first[:id]) %></center>
+	      </div>
+	      <div class="eight columns">
+		      <h4>
+		        <%= link_to User.find(@top_users.first[:id]).nickname, User.find(@top_users.first[:id]) %>
+		      </h4>
+		      <h5 class="subheader">
+		      	<%= @top_users.first[:feat_count].to_s + " feats" %>
+		      </h5>
+	      </div>
+        <% else %>
+        <div class="twelve columns"><center>
+           <h5 class="subheader"> No one has signed up :( </h5>
+        </center></div>
+        <% end %>
       </div>
+      
     </div>
 
     <div class="nine columns">

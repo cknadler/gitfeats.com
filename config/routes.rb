@@ -3,9 +3,6 @@ Gitfeats::Application.routes.draw do
   # Root
   root to: 'root#index'
 
-  # Stats
-  match '/stats', to: 'public_pages#stats'
-
   # Users
   resources :users, only: [:show, :destroy]
 
@@ -18,6 +15,9 @@ Gitfeats::Application.routes.draw do
   # Feats
   resources :feats, only: [:show, :index]
   match '/feats', to: 'feats#index'
+
+  # Stats
+  match '/stats', to: 'stats#index'
 
   # Search
   match '/search', to:'users#search'

@@ -7,6 +7,10 @@ class PublicPagesController < ApplicationController
   end
   
   def stats
+  
+    #for random feat
+      @random_feat = Feat.all.sample(1).first
+    
     #for most recent completed feat to display
     tmp = CompletedFeat.order("created_at DESC").limit(1)
     if tmp.first
@@ -32,7 +36,7 @@ class PublicPagesController < ApplicationController
     end
     
     @top_users = []
-    tmp = get_users(10, true)
+    tmp = get_users(7, true)
     tmp.each do |x|
       t = {}
       t[:id] = x.id
@@ -40,6 +44,7 @@ class PublicPagesController < ApplicationController
       t[:feat_count] = x.completed_feats.count
       @top_users.push(t)
     end
+    @top_users.reverse!
   end
   
   #count - how many rows wanted

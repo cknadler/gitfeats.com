@@ -24,7 +24,9 @@
 </head>
 
 <body>
-  <%= render :partial => "shared/header" %>
+  <%= render :partial => "layouts/header" %>
+
+  <!-- Flash notices -->
   <% if flash[:notice] %>
   <div class="row">
     <div class="alert-box alert">
@@ -35,6 +37,7 @@
   <% end %>
 
   <%= yield %>
-  <%= render :partial => "shared/footer" %>
+
+  <%= render :partial => "layouts/footer" %>
 </body>
 </html>

@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @install_cmd = "gem install git-feats"
     @key_cmd = format_key_conf_command(@api_key)
     @user_cmd = format_user_conf_command(@user.nickname)
-    @alias_cmd = "echo 'alias git=git-feats' >> .bashrc"
+    @alias_cmd = "echo 'alias git=git-feats' >> ~/.bashrc"
     @one_liner = [@user_cmd, @key_cmd, @install_cmd, @alias_cmd].join(" && ") 
   end
 

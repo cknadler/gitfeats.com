@@ -1,0 +1,62 @@
+%dl.tabs
+  %dd.active
+    %a{:href => "#feed"} Feed
+  %dd
+    %a{:href => "#feats"} Feats
+  %dd
+    %a{:href => "#gitStats"} Git Stats
+  - if @current_user == @user
+    %dd
+      %a{:href => "#setup"} Setup
+
+%ul.tabs-content
+  / Feed Tab
+  %li#feedTab.active
+    - @feats.each do |cfeat|
+      = link_to(cfeat.feat) do
+        .panel
+          .row
+            / Image
+            .three.columns
+              %img{:height => "108",
+                :src => "/assets/feats/#{cfeat.feat.filename}",
+                :width => "108"}/
+
+            / Description
+            .nine.columns
+              %h4= cfeat.feat.name
+              %h6.subheader.timestamp
+                = cfeat.feat.created_at.strftime("%b %d, %Y")
+              %h5.subheader= cfeat.feat.description
+
+  / Feats Tab
+  / TODO: This needs a refactor
+  %li#featsTab
+    - @total.times do |index|
+      - if index % 3 == 0
+        <div class="row">
+      .four.columns
+        - if index < @feats.count
+          = link_to(@feats[index].feat) do
+            .panel
+              %img{src: "/assets/feats/#{@feats[index].feat.filename}"}
+      - if index % 3 == 2
+        </div>
+
+  / Stats Tab
+  %li#gitStatsTab
+    %table.twelve
+      %thead
+        %tr
+          %th Command
+          %th Count
+      %tbody
+        - @command_history.each do |command_his|
+          %tr
+            %td= command_his.command.name
+            %td= command_his.count
+
+  / Setup Tab
+  - if @current_user == @user
+    %li#setupTab
+      = render "setup"

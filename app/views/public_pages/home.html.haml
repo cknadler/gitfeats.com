@@ -1,0 +1,108 @@
+/ Banner
+#banner
+  .row
+    .three.columns
+    .two.columns
+      %img.logo{:src => "/assets/git-feats_logo.png"}/
+    .seven.columns
+      %h1 Git-Feats
+  .row
+    .twelve.columns
+      %center
+        %h4 Achievements from the command line
+  .row
+    .three.columns.centered
+      = link_to "Get Started", login_path, :class => "large button radius"
+
+/ Social Buttons
+#social-buttons.row
+  .five.columns.centered
+    %center
+      %ul#social-buttons-list
+        %li
+          %iframe.center{:allowtransparency => "true", 
+            :frameborder => "0", 
+            :height => "20", 
+            :scrolling => "0", 
+            :src => "http://ghbtns.com/github-btn.html?user=cknadler&repo=gitfeats.com&type=watch&count=true", 
+            :width => "107"}
+        %li
+          %iframe.center{:allowtransparency => "true",
+          :frameborder => "0", 
+          :height => "20", 
+          :scrolling => "0", 
+          :src => "http://ghbtns.com/github-btn.html?user=cknadler&repo=gitfeats.com&type=fork&count=true", 
+          :width => "107"}
+        %li
+          %a.twitter-share-button{"data-text" => "Command line git achievements", 
+            "data-url" => "http://gitfeats.com", 
+            "data-via" => "cknadler", 
+            :href => "https://twitter.com/share"} Tweet
+          :javascript
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+      %hr/
+
+/ Three Column Images
+#main-description.row
+  .four.columns
+    %center
+      %img{:src => "/assets/gem.png"}/
+      %h4 Install
+    .row
+      .twelve.columns
+        %p
+          Get started in three steps. Install a gem, alias git and keep working. 
+          What are you waiting for? #{link_to "Sign in", login_path} and get going!
+  .four.columns
+    %center
+      %img{:src => "/assets/feat.png"}/
+      %h4 Complete Feats
+    .row
+      .twelve.columns
+        %p
+          Complete Feats with git on the command line and see them on your profile instantly.
+          There are over forty feats spanning over dozens of git commands.
+  .four.columns
+    %center
+      %img{:src => "/assets/love.png"}/
+      %h4 Fall In Love
+    .row
+      .twelve.columns
+        %p
+          Share feats, track your git command usage, 
+          find friends, view global stats and remember, git-feats loves you...
+
+/ Separator
+.row
+  .twelve.columns
+    %hr/
+
+/ Get Involved
+#get-involved.row
+  .twelve.columns
+    .row
+      .eight.columns
+        .panel.radius
+          .row
+            .six.mobile-two.columns
+              %h4 Open Source
+              %hr/
+              %h5.subheader Git Feats is absolutely, positively, 100% open source, and always will be
+            .six.mobile-two.columns
+              %p 
+                All of the Git Feats site and, its partner in crime, 
+                the git-feats gem are hosted on github. 
+                Feel free to make issues, request features, hack on the project, 
+                or just chat with us. If you send us a pull request we might just love you forever.
+              %p 
+                <3 <3 <3 <3
+      .four.columns.hide-for-small
+        %center
+          %h4 Get Involved!
+        %hr/
+        %a{:href => "https://github.com/cknadler/gitfeats.com"}
+        .panel.radius.callout{:align => "center"}
+          %strong Site on Github
+        %a{:href => "https://github.com/cknadler/git-feats"}
+        .panel.radius.callout{:align => "center"}
+          %strong Gem on Github

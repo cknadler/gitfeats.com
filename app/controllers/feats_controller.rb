@@ -1,19 +1,32 @@
 class FeatsController < ApplicationController
   # GET /feats
   def index
-    @feats = Feat.all
+    @feats = Feat.order("name ASC")
   end
 
   # GET /feats/1
   def show
     @feat = Feat.find(params[:id])
-    @last_user = @feat.completed_feats.last
-    @last_user = @last_user.user if @last_user
-    @num_completed = CompletedFeat.find_all_by_feat_id(params[:id]).count
-    @percent = ((@num_completed.to_f/User.all.count.to_f)*100).to_i
+    @percent = completed_percentage(@feat)
+
+    newest = @feat.completed_feats.last
+    @newest_user = newest.user if newest
+
+    # Current user completed feat? logic
+    @user_completed_feat = @feat.owned_by_user(@current_user)
+
+    if @user_completed_feat
+      @completed_on = @user_completed_feat.created_at.strftime("%b %d, %Y")
+    end
   end
 
-  def index
-    @feats = Feat.order("name ASC")
-  end 
+  private
+
+  # Finds the percentage of users that have compelted a feat
+  #
+  # Returns percentage as an int
+  def completed_percentage(feat)
+    completed_num = CompletedFeat.find_all_by_feat_id(feat.id).count
+    ((completed_num.to_f / User.all.count.to_f) * 100).to_i
+  end
 end

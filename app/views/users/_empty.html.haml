@@ -1,0 +1,6 @@
+- if @current_user == @user
+  = render 'setup'
+- else
+  .row
+    .twelve.columns
+      %h3#no-feat-notice This user has no feats

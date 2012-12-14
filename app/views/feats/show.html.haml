@@ -1,0 +1,46 @@
+.row
+  .six.columns
+    .panel
+      %img{src: "/assets/feats/#{@feat.filename}"}
+    - if @user_completed_feat
+      .panel.callout.radius
+        %h5
+          %center Completed on #{@completed_on}
+
+  .six.columns
+    .panel
+      %h4.hide-for-small
+        = @feat.name
+      %hr/
+      %h5.subheader
+        = @feat.description
+  
+  .six.columns
+    .panel
+      %h5.hide-for-small
+        Sitewide Completion
+      .radius.progress.ten
+        %span.meter{style: "width:#{@percent}%;"}
+      %span.prog_text
+        %h6 #{@percent}%
+
+  .six.columns
+    .panel
+      %h5.hide-for-small
+        Latest Completion
+      %hr/
+      .row
+        - if @newest_user
+          .four.columns
+            %center
+              = link_to image_tag(@newest_user.gravatar_url(size: 140),
+                height: 50, 
+                width: 50, 
+                class: "rounded"), 
+                @newest_user
+          .eight.columns
+            %h3= link_to @newest_user.nickname, @newest_user
+        - else
+          .twelve.columns
+            %center
+              %h5.subheader No one has completed this feat.

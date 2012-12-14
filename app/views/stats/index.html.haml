@@ -1,0 +1,79 @@
+.row
+  / Top Users
+  #top-users-tag.three.panel.columns
+    %h5.hide-for-small Top Users
+    %hr/
+    .row
+      - @top_users.each do |top_user|
+        - user = User.find(top_user[:id])
+        .four.columns
+          %center= link_to image_tag(user.gravatar_url(size: 140), |
+              height: 50, width: 50, class: "rounded"), user  |
+        .eight.columns
+          %h5.top-user-text
+            = link_to user.nickname, user
+          %h5.subheader
+            = top_user[:feat_count].to_s + " feats"
+
+  / Progress Bar
+  .nine.columns
+    .panel
+      %h5.subheader
+        Total Number of Completed Feats: #{@completed_feats_count}
+      .radius.progress.ten
+        %span.meter{:style => "width:#{@percent}%;"}
+      %span.prog_text
+        %h6
+          = "#{@completed_feats_count}/#{@total_feats_count}"
+
+  / Graph
+  .nine.columns
+    .panel
+      .row
+        .twelve.columns
+          %h5
+            Git Command Usage
+          %hr/
+      .row
+        = render :partial => "maingraph"
+
+    / Latest Feat
+    .row
+      .six.columns
+        .panel
+          %h5 Most Recent Feat
+          %br/
+          .row
+            .twelve.columns
+              - if @latest_feat
+                .four.columns
+                  %img{:src => "/assets/feats/#{@latest_feat.filename}"}/
+                .eight.columns
+                  %h5.subheader
+                    = link_to @latest_feat.name, @latest_feat
+                    = " - "
+                    = @latest_feat.description
+              - else
+                .twelve.columns
+                  %center
+                    %h5.subheader No Feats Have Been Completed
+
+      / Random Feat
+      .six.columns
+        .panel
+          %h5 Random Feat
+          %br/
+          .row
+            .twelve.columns
+              - if @random_feat
+                .four.columns
+                  %img{:src => "/assets/feats/#{@random_feat.filename}"}/
+                .eight.columns
+                  %h5.subheader
+                    = link_to @random_feat.name, @random_feat
+                    = " - "
+                    = @random_feat.description
+              - else
+                .twelve.columns
+                  %center
+                    %h5.subheader No Feats Have Been Completed

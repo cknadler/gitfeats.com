@@ -31,9 +31,9 @@ GEM
     annotate (2.5.0)
       rake
     arel (3.0.2)
-    better_errors (0.0.7)
-      coderay
-      erubis
+    better_errors (0.2.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.7.0)
     binding_of_caller (0.6.8)
     builder (3.0.4)
     chunky_png (1.2.6)
@@ -68,6 +68,7 @@ GEM
       multipart-post (~> 1.1)
     fssm (0.2.9)
     gravtastic (3.2.6)
+    haml (3.1.7)
     hashie (1.2.0)
     hike (1.2.1)
     httpauth (0.2.0)
@@ -88,7 +89,7 @@ GEM
     modular-scale (1.0.2)
       compass (>= 0.11.5)
       sassy-math (>= 1.2)
-    multi_json (1.4.0)
+    multi_json (1.5.0)
     multipart-post (1.1.5)
     oauth2 (0.8.0)
       faraday (~> 0.8)
@@ -178,6 +179,7 @@ DEPENDENCIES
   debugger
   execjs
   gravtastic
+  haml
   jquery-rails
   libv8 (~> 3.11.8)
   omniauth

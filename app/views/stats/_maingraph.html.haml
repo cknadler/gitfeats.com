@@ -1,5 +1,4 @@
-<!-- DONT LOOK AT ME!!! -->
-<style>
+:css
   g.x.axis text {
     text-align: right;
   }
@@ -10,13 +9,12 @@
     right: 10px;
     text-align: right;
   }
-</style>
 
-<div class="twelve columns">
-  <script>
-    var data = <%= raw @top_commands.to_json %>;
-    var max_command = <%= raw @top_command_count.to_json %>;
-    var num_commands = <%= raw @top_commands.count.to_json %>;
+.twelve.columns
+  :javascript
+    var data = #{raw @top_commands.to_json};
+    var max_command = #{raw @top_command_count.to_json};
+    var num_commands = #{raw @top_commands.count.to_json};
 
     var margin = {top: 20, right: 20, bottom: 100, left: 40},
         width = 700 - margin.left - margin.right,
@@ -104,5 +102,4 @@
           .delay(delay);
     }
 
-  </script>
-</div>
+  

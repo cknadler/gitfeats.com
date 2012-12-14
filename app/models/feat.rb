@@ -17,7 +17,7 @@ class Feat < ActiveRecord::Base
 
   attr_accessible :description, :name, :threshold, :filename
 
-  def owned_by_user (user, feat)
-    CompletedFeat.find_by_user_id_and_feat_id(user.id, feat.id)
+  def owned_by_user(user)
+    CompletedFeat.find_by_user_id_and_feat_id(user.id, self.id)
   end
 end

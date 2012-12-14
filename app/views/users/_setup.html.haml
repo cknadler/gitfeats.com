@@ -1,0 +1,60 @@
+.row
+  .twelve.columns
+    - if @feats.empty?
+      .row
+        .twelve.columns
+          %h3#no-feat-notice You haven't completed any feats!
+    .row
+      .twelve.columns
+        %h4.subheader Your API Key
+    .row
+      .twelve.columns
+        .panel
+          %input{:onclick => "javascript:select();", 
+            :type => "text", 
+            :value => @api_key}/
+
+    .row
+      .twelve.columns
+        .row
+          .twelve.columns
+            %h4.subheader Quick Setup
+
+        .row
+          .twelve.columns
+            .panel
+              %h5 Everyone loves a one-liner:
+              .row
+                .twelve.columns
+                  %input{:onclick => "javascript:select();",
+                    :type => "text", 
+                    :value => @one_liner}/
+
+              %h5 Or, step by step:
+              %h6 Install the gem
+              .row
+                .twelve.mobile-three.columns
+                  %input{:onclick => "javascript:select();",
+                    :type => "text",
+                    :value => @install_cmd}/
+
+              %h6 Add your Github username
+              .row
+                .twelve.mobile-three.columns
+                  %input{:onclick => "javascript:select();", 
+                    :type => "text", 
+                    :value => @user_cmd}/
+
+              %h6 Add your API key
+              .row
+                .twelve.mobile-three.columns
+                  %input{:onclick => "javascript:select();",
+                    :type => "text",
+                    :value => @key_cmd}/
+
+              %h6 Alias git
+              .row
+                .twelve.mobile-three.columns
+                  %input{:onclick => "javascript:select();",
+                    :type => "text",
+                    :value => @alias_cmd}/

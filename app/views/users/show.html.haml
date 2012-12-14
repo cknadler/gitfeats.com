@@ -1,0 +1,30 @@
+.row
+  / User tabs
+  .nine.columns.push-three
+    - if !@feats.empty?
+      = render 'feeds'
+    - else
+      = render 'empty'
+
+  / Left User Info
+  .three.columns.pull-nine
+    / User image and info
+    = link_to image_tag(@user.gravatar_url(size: 300)), @user, class: "th"
+    %h3
+      = @user.nickname
+    %h6.subheader
+      Joined on #{@user.created_at.strftime("%b %d, %Y")}
+    %h6
+    %h6.subheader
+      %a{:href => @github_url} View on Github
+    %h6
+    %hr/
+
+    / Progress Bar
+    %h5.subheader
+      Number of feats: #{@feats.count}
+    .radius.progress.ten
+      %span.meter{:style => "width:#{@percent}%;"}
+    %span.prog_text
+      %h6
+        = "#{@feats.count}/#{@all_feat_count}"

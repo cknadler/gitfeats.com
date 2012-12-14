@@ -1,0 +1,13 @@
+.row
+  .twelve.columns
+    %h1 All feats
+    .allFeats
+      - @feats.each do |feat|
+        = link_to(feat) do
+          .panel
+            .row
+              .two.columns
+                %img{src: "/assets/feats/#{feat.filename}"}
+              .ten.columns
+                %h4= feat.name
+                %h5.subheader= feat.description

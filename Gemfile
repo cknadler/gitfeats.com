@@ -4,6 +4,8 @@ gem 'rails', '3.2.9'
 gem 'pg'
 gem 'thin'
 
+gem 'haml'
+
 gem 'jquery-rails'
 gem 'execjs'
 gem 'libv8', '~> 3.11.8'

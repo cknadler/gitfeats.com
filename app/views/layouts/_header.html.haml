@@ -1,0 +1,55 @@
+#header.contain-to-grid
+  .row
+    %nav.top-bar
+
+      / Logo
+
+      %ul
+        %li.name
+          %img{src: "/assets/git-feats_header.png"}
+        %li.name
+          - if logged_in?
+            %h1= link_to "Git Feats", stats_path
+          - else
+            %h1= link_to "Git Feats", root_path
+
+
+      / Left Nav Section
+
+      - if logged_in?
+        %section.search
+          %ul.left
+            %li.divider
+            %li
+              = form_tag search_path do
+                = text_field_tag :query, nil, placeholder: "Find User"
+            %li
+              = image_submit_tag("search@2x.png")
+
+        %section.options
+          %ul.left
+            %li.divider
+            %li
+              = link_to "stats", stats_path
+            %li
+              = link_to "feats", feats_path
+
+
+      / Right Nav Section
+
+      %section
+        %ul.right
+          - if logged_in?
+            %li.avatar
+              / This is a hack to get retina images from gravatar
+              = link_to image_tag(@current_user.gravatar_url(size: 140),
+                height: 20, width: 20, class: "rounded"),
+                @current_user
+            %li
+              = link_to @current_user.nickname, @current_user
+            %li
+              = link_to "logout", logout_path, method: :delete
+
+          - else
+            %li
+              = link_to "Sign in with Github", login_path

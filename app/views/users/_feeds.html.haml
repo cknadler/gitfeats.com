@@ -5,7 +5,7 @@
     %a{:href => "#feats"} Feats
   %dd
     %a{:href => "#gitStats"} Git Stats
-  - if @current_user == @user
+  - if current_user?(@user)
     %dd
       %a{:href => "#setup"} Setup
 
@@ -30,7 +30,8 @@
               %h5.subheader= cfeat.feat.description
 
   / Feats Tab
-  / TODO: This needs a refactor
+  / TODO: Refactor
+  / Attempt to get rid of inline html
   %li#featsTab
     - @total.times do |index|
       - if index % 3 == 0
@@ -57,6 +58,6 @@
             %td= command_his.count
 
   / Setup Tab
-  - if @current_user == @user
+  - if logged_in?
     %li#setupTab
       = render "setup"

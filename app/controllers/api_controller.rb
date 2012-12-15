@@ -3,7 +3,7 @@ class ApiController < ApplicationController
   
   def post_feats
     if @user
-      update_history( params[:history] )
+      update_history(params[:history])
       complete_feats
     end
     render :nothing => true
@@ -11,14 +11,10 @@ class ApiController < ApplicationController
   
   private
     def load_user
-            logger.debug "got to load_user"
       @user = User.find_by_nickname_and_gemkey(params[:username], params[:key])
-                  logger.debug @user.nickname
-
     end
     
     def update_history( histories )
-      logger.debug "got to update history"
       histories.each do |h_name, h_count|
         command = Command.find_by_name(h_name)
         ch = CommandHistory.find_or_create_by_user_id_and_command_id(@user.id, command.id)
@@ -34,6 +30,5 @@ class ApiController < ApplicationController
       feats.each do |feat|
         CompletedFeat.find_or_create_by_user_id_and_feat_id(@user.id, feat.id)
       end
- 
     end
 end

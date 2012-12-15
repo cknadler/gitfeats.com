@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @github_url = "http://www.github.com/#{@user.nickname}" 
 
     # Setup data
-    @api_key = "#{@user.gemkey}"
+    @api_key = @user.gemkey
     @install_cmd = "gem install git-feats"
     @key_cmd = format_key_conf_command(@api_key)
     @user_cmd = format_user_conf_command(@user.nickname)
@@ -30,7 +30,8 @@ class UsersController < ApplicationController
 
     # else if the search for user fails, go back and tell them
     elsif @user.nil?
-      redirect_to(:back, :notice => "Could not find user #{params[:query]}")
+      redirect_to(:back, 
+                  notice: "Could not find user #{params[:query]}")
 
     # else take them to the users page
     else

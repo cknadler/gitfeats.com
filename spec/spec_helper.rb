@@ -12,9 +12,8 @@ Spork.prefork do
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
   require 'rspec/autorun'
-  require 'capybara/rails'
-  require 'capybara/rspec'
   require 'shoulda-matchers'
+  require 'capybara/rspec'
 
   OmniAuth.config.test_mode = true
 
@@ -24,7 +23,11 @@ Spork.prefork do
 
   RSpec.configure do |config|
 
+    config.include Capybara::DSL
+
     config.treat_symbols_as_metadata_keys_with_true_values = true
+
+    config.use_transactional_fixtures = false
 
     # If true, the base class of anonymous controllers will be inferred
     # automatically. This will be the default behavior in future versions of

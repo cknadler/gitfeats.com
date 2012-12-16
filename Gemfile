@@ -34,13 +34,14 @@ group :development do
   gem 'binding_of_caller'
 end
 
+gem 'rspec-rails', :group => [:test, :development]
 # Gems used for testing
 group :development, :test do
-  gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'rb-fsevent'
+  gem 'faker'
 
-  # Auto Testing
+  # Auto testing
   gem 'guard-rspec'
   gem 'guard-spork'
 end

@@ -13,3 +13,6 @@
 
 # github api keys
 config/git_secret.yml
+
+# simplecov
+coverage

@@ -58,10 +58,9 @@ ActiveRecord::Schema.define(:version => 20121208115734) do
     t.string   "nickname"
     t.string   "email"
     t.string   "token"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "gemkey"
-    t.boolean  "authenticated", :default => false
   end
 
 end

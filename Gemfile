@@ -44,6 +44,7 @@ group :test, :development do
   # Auto testing
   gem 'guard-rspec'
   gem 'guard-spork'
+  gem 'ruby_gntp'
 end
 
 group :test do

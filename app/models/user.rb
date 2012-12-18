@@ -10,7 +10,7 @@
 #  token      :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  gemkey     :string(255)
+#  apikey     :string(255)
 #
 
 require 'digest'
@@ -22,8 +22,8 @@ class User < ActiveRecord::Base
   has_many :completed_feats
   has_many :command_histories
 
-  attr_accessible :email, :nickname, :provider, :token, :uid, :gemkey
-  before_save :create_gemkey
+  attr_accessible :email, :nickname, :provider, :token, :uid, :apikey
+  before_save :create_apikey
   
   def self.create_from_auth_hash(hash)
     create!(extract_info(hash))
@@ -40,8 +40,8 @@ class User < ActiveRecord::Base
 
   private
   
-  def create_gemkey
-    self.gemkey = Digest::SHA1.hexdigest(Time.now.to_s)   
+  def create_apikey
+    self.apikey = Digest::SHA1.hexdigest(Time.now.to_s)   
   end
   
   def self.extract_info(hash)

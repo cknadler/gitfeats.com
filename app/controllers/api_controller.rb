@@ -11,7 +11,7 @@ class ApiController < ApplicationController
   
   private
     def load_user
-      @user = User.find_by_nickname_and_gemkey(params[:username], params[:key])
+      @user = User.find_by_nickname_and_apikey(params[:username], params[:key])
     end
     
     def update_history( histories )

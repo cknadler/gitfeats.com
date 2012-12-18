@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @github_url = "http://www.github.com/#{@user.nickname}" 
 
     # Setup data
-    @api_key = @user.gemkey
+    @api_key = @user.apikey
     @install_cmd = "gem install git-feats"
     @key_cmd = format_key_conf_command(@api_key)
     @user_cmd = format_user_conf_command(@user.nickname)

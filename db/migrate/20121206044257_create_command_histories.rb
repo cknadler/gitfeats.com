@@ -4,9 +4,9 @@ class CreateCommandHistories < ActiveRecord::Migration
       t.integer :count
       t.references :command
       t.references :user
-
       t.timestamps
     end
+
     add_index :command_histories, :command_id
     add_index :command_histories, :user_id
   end

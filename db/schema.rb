@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121208115734) do
+ActiveRecord::Schema.define(:version => 20121218062730) do
 
   create_table "command_histories", :force => true do |t|
     t.integer  "count"
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(:version => 20121208115734) do
     t.string   "token"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "gemkey"
+    t.string   "apikey"
   end
 
 end

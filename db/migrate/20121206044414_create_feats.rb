@@ -5,7 +5,6 @@ class CreateFeats < ActiveRecord::Migration
       t.text :description
       t.references :command
       t.integer :threshold
-
       t.timestamps
     end
     add_index :feats, :command_id

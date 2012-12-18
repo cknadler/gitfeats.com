@@ -9,6 +9,7 @@
 #  threshold   :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  filename    :string(255)
 #
 
 class Feat < ActiveRecord::Base

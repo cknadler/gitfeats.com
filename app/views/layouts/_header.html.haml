@@ -3,7 +3,6 @@
     %nav.top-bar
 
       / Logo
-
       %ul
         %li.name
           %img{src: "/assets/git-feats_header.png"}
@@ -15,7 +14,6 @@
 
 
       / Left Nav Section
-
       - if logged_in?
         %section.search
           %ul.left
@@ -36,7 +34,6 @@
 
 
       / Right Nav Section
-
       %section
         %ul.right
           - if logged_in?
@@ -52,4 +49,4 @@
 
           - else
             %li
-              = link_to "Sign in with Github", login_path
+              = link_to "Log in with GitHub", login_path

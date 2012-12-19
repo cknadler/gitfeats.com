@@ -19,12 +19,18 @@ class User < ActiveRecord::Base
   include Gravtastic
   has_gravatar
   
-  has_many :completed_feats
-  has_many :command_histories
+  attr_accessible :uid, :email, :nickname, :provider, :token
 
-  attr_accessible :email, :nickname, :provider, :token, :uid, :apikey
+  has_many :completed_feats,   :dependent => :destroy
+  has_many :command_histories, :dependent => :destroy
+
   before_save :create_apikey
-  
+
+  # Find a user by nickname ignoring case
+  def self.find_by_nickname!(nickname)
+    where(['lower(nickname) =?', nickname.downcase]).first!
+  end  
+
   def self.create_from_auth_hash(hash)
     create!(extract_info(hash))
   end
@@ -35,7 +41,19 @@ class User < ActiveRecord::Base
   end
 
   def to_param
-    self.nickname.parameterize
+    nickname
+  end
+
+  def github_url
+    "https://github.com/#{nickname}" if nickname.present?
+  end
+
+  def conf_apikey_cmd
+    "git config --global feats.key #{apikey}"
+  end
+
+  def conf_user_cmd
+    "git config --global github.user #{nickname}"
   end
 
   private

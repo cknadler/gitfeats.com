@@ -23,4 +23,22 @@ describe User do
   it { should allow_mass_assignment_of(:nickname) }
   it { should allow_mass_assignment_of(:email) }
   it { should allow_mass_assignment_of(:token) }
+
+  it { should have_many(:completed_feats) }
+  it { should have_many(:command_histories) }
+
+  describe "apikey" do
+    it "shouldn't be nil after user creation" do
+      user.apikey.should_not == nil
+    end
+
+    it "should be the right length" do
+      user.apikey.length.should == 40
+    end
+  end
+
+  describe '.to_param' do
+    subject { user.to_param }
+    it { should eq user.nickname }
+  end
 end

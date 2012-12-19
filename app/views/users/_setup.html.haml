@@ -12,7 +12,7 @@
         .panel
           %input{:onclick => "javascript:select();", 
             :type => "text", 
-            :value => @api_key}/
+            :value => @user.apikey}/
 
     .row
       .twelve.columns
@@ -28,7 +28,7 @@
                 .twelve.columns
                   %input{:onclick => "javascript:select();",
                     :type => "text", 
-                    :value => @one_liner}/
+                    :value => one_liner(@user)}/
 
               %h5 Or, step by step:
               %h6 Install the gem
@@ -36,25 +36,25 @@
                 .twelve.mobile-three.columns
                   %input{:onclick => "javascript:select();",
                     :type => "text",
-                    :value => @install_cmd}/
+                    :value => install_cmd}/
 
               %h6 Add your GitHub username
               .row
                 .twelve.mobile-three.columns
                   %input{:onclick => "javascript:select();", 
                     :type => "text", 
-                    :value => @user_cmd}/
+                    :value => @user.conf_user_cmd}/
 
               %h6 Add your API key
               .row
                 .twelve.mobile-three.columns
                   %input{:onclick => "javascript:select();",
                     :type => "text",
-                    :value => @key_cmd}/
+                    :value => @user.conf_apikey_cmd}/
 
               %h6 Alias git
               .row
                 .twelve.mobile-three.columns
                   %input{:onclick => "javascript:select();",
                     :type => "text",
-                    :value => @alias_cmd}/
+                    :value => bash_alias}/

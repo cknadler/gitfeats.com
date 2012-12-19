@@ -11,7 +11,6 @@ FactoryGirl.define do
     provider 'github'
     nickname { Faker::Name.name.parameterize }
     email
-    gravatar_id { Faker::Internet.email }
     token { SecureRandom.hex }
   end
 end

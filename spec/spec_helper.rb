@@ -5,7 +5,7 @@ require 'spork'
 
 Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'
-
+  
   require 'rails/application'
   Spork.trap_method(Rails::Application::RoutesReloader, :reload!) # Rails 3.1
 
@@ -14,6 +14,9 @@ Spork.prefork do
   require 'rspec/autorun'
   require 'shoulda-matchers'
   require 'capybara/rspec'
+
+  # Load data from seeds.rb (rake:db:seed equivalent)
+  load "#{Rails.root}/db/seeds.rb" 
 
   OmniAuth.config.test_mode = true
 

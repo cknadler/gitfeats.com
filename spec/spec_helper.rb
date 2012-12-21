@@ -26,17 +26,17 @@ Spork.prefork do
 
   RSpec.configure do |config|
 
+    # This is due to a possible bug with RSpec
     config.include Capybara::DSL
 
     config.treat_symbols_as_metadata_keys_with_true_values = true
 
-    config.use_transactional_fixtures = false
-
     # If true, the base class of anonymous controllers will be inferred
     # automatically. This will be the default behavior in future versions of
     # rspec-rails.
-    config.infer_base_class_for_anonymous_controllers = false
+    config.infer_base_class_for_anonymous_controllers = true
 
+    # Include factory girl syntax
     config.include FactoryGirl::Syntax::Methods
   end
 end

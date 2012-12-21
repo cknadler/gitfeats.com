@@ -12,8 +12,9 @@ class UsersController < ApplicationController
     @total = roundup(@feats.count, 3)
   end
 
-  def search 
-    @user = User.find_by_nickname!(params[:query])
+  # TODO: Refactor search
+  def search
+    @user = User.find_by_nickname(params[:query]) unless params[:query].nil?
     
     if params[:query].nil?
       redirect_to :root
@@ -35,7 +36,7 @@ class UsersController < ApplicationController
 
   private
 
-  def roundup (num, ceiling)
+  def roundup(num, ceiling)
     return num if num % ceiling  == 0
     return num + ceiling - (num % ceiling)
   end

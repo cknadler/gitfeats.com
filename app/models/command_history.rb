@@ -11,17 +11,16 @@
 #
 
 class CommandHistory < ActiveRecord::Base
+  attr_accessible :count
   belongs_to :command
   belongs_to :user
-  attr_accessible :count
 
   def self.commands_by_run_number(count, top)
     commands = Command.all.sort_by { |x| x.global_use_count }
     if top
-    	commands.last(count)
-	  else
-		  commands.first(count)
-	  end
+      commands.last(count)
+    else
+      commands.first(count)
+    end
   end
-
 end

@@ -26,10 +26,15 @@ class User < ActiveRecord::Base
 
   before_save :create_apikey
 
-  # Find a user by nickname ignoring case
+  # Find a user by nickname ignoring case and 404 if name isn't found
   def self.find_by_nickname!(nickname)
     where(['lower(nickname) =?', nickname.downcase]).first!
   end  
+
+  # Override find_by_nickname to ignore case
+  def self.find_by_nickname(nickname)
+    where(['lower(nickname) =?', nickname.downcase]).first
+  end
 
   def self.create_from_auth_hash(hash)
     create!(extract_info(hash))

@@ -9,7 +9,7 @@ describe "Users" do
     describe "without feats" do
       describe "logged in as current user" do
         before do
-          login(user)
+          login user
         end
 
         it { should have_content("You haven't completed any feats!") }
@@ -18,7 +18,7 @@ describe "Users" do
       describe "logged in as other user" do
         before do
           @other_user = create :user
-          login(user)
+          login user
           visit user_path(@other_user)
         end
 

@@ -33,7 +33,7 @@
         - if @newest_user
           .four.columns
             %center
-              = link_to image_tag(@newest_user.gravatar_url(size: 140),
+              = link_to image_tag(gravatar_url(@newest_user, 140),
                 height: 50, 
                 width: 50, 
                 class: "rounded"), 

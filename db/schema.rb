@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121218062730) do
+ActiveRecord::Schema.define(:version => 20121223015000) do
 
   create_table "command_histories", :force => true do |t|
     t.integer  "count"
@@ -53,14 +53,15 @@ ActiveRecord::Schema.define(:version => 20121218062730) do
   add_index "feats", ["command_id"], :name => "index_feats_on_command_id"
 
   create_table "users", :force => true do |t|
-    t.integer  "uid"
+    t.string   "uid"
     t.string   "provider"
     t.string   "nickname"
     t.string   "email"
     t.string   "token"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "apikey"
+    t.string   "gravatar_id"
   end
 
 end

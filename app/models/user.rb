@@ -2,24 +2,22 @@
 #
 # Table name: users
 #
-#  id         :integer          not null, primary key
-#  uid        :integer
-#  provider   :string(255)
-#  nickname   :string(255)
-#  email      :string(255)
-#  token      :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  apikey     :string(255)
+#  id          :integer          not null, primary key
+#  uid         :string(255)
+#  provider    :string(255)
+#  nickname    :string(255)
+#  email       :string(255)
+#  token       :string(255)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  apikey      :string(255)
+#  gravatar_id :string(255)
 #
 
 require 'digest'
 
 class User < ActiveRecord::Base
-  include Gravtastic
-  has_gravatar
-  
-  attr_accessible :uid, :email, :nickname, :provider, :token
+  attr_accessible :uid, :email, :nickname, :provider, :token, :gravatar_id
 
   has_many :completed_feats,   :dependent => :destroy
   has_many :command_histories, :dependent => :destroy
@@ -50,7 +48,7 @@ class User < ActiveRecord::Base
   end
 
   def github_url
-    "https://github.com/#{nickname}" if nickname.present?
+    "https://github.com/#{nickname}"
   end
 
   def conf_apikey_cmd
@@ -68,18 +66,13 @@ class User < ActiveRecord::Base
   end
   
   def self.extract_info(hash)
-    provider    = hash.fetch('provider')
-    uid         = hash.fetch('uid')
-    nickname    = hash.fetch('info',{}).fetch('nickname')
-    email       = hash.fetch('info',{}).fetch('email', nil)
-    token       = hash.fetch('credentials', {}).fetch('token')
-    
     {
-      :provider => provider,
-      :token => token,
-      :uid => uid,
-      :nickname => nickname,
-      :email => email,
+      :uid         => hash.fetch('uid'),
+      :provider    => hash.fetch('provider'),
+      :token       => hash.fetch('credentials', {}).fetch('token'),
+      :nickname    => hash.fetch('info',{}).fetch('nickname'),
+      :email       => hash.fetch('info',{}).fetch('email', nil),
+      :gravatar_id => hash.fetch('extra',{}).fetch('raw_info',{}).fetch('gravatar_id', nil)
     }
   end
 end

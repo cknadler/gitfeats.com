@@ -33,7 +33,7 @@
   / TODO: Refactor
   / Attempt to get rid of inline html
   %li#featsTab
-    - @total.times do |index|
+    - @feat_tab_panes.times do |index|
       - if index % 3 == 0
         <div class="row">
       .four.columns
@@ -52,7 +52,7 @@
           %th Command
           %th Count
       %tbody
-        - @command_history.each do |command_his|
+        - @user.command_histories.each do |command_his|
           %tr
             %td= command_his.command.name
             %td= command_his.count

@@ -39,7 +39,7 @@
           - if logged_in?
             %li.avatar
               / This is a hack to get retina images from gravatar
-              = link_to image_tag(current_user.gravatar_url(size: 140),
+              = link_to image_tag(gravatar_url(current_user, 140),
                 height: 20, width: 20, class: "rounded"),
                 current_user
             %li

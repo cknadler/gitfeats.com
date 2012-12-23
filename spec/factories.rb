@@ -16,7 +16,9 @@ FactoryGirl.define do
   factory :feat do
     name { Faker::Lorem.word }
     description { Faker::Lorem.words }
-    filename { Faker::Lorem.word }
+    threshold { rand(1..99) }
+    # default to a bricks and mortar feat image
+    filename { "bricks_and_mortar.png" }
     command
   end
 
@@ -25,7 +27,7 @@ FactoryGirl.define do
   end
 
   factory :command_history do
-    count { Random.rand(1..99) }
+    count { Random.rand(1..1000) }
     command
     user
   end

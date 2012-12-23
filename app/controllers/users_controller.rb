@@ -1,15 +1,12 @@
 class UsersController < ApplicationController
   def show
-
-    # Using .find_by_nickname! to allow for vanity URLs to be miscapitalized.
-    # For example: gitfeats.com/cknadler & gitfeats.com/CKnadler are both valid.
     @user = User.find_by_nickname!(params[:nickname])
 
     # TODO: Refactor
     @feats = @user.completed_feats.reverse
     @all_feat_count = Feat.count
     @percent = ((@feats.count.to_f/@all_feat_count.to_f)*100).to_i
-    @total = roundup(@feats.count, 3)
+    @feat_tab_panes = roundup(@feats.count, 3)
   end
 
   # TODO: Refactor search

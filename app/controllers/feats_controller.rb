@@ -13,7 +13,7 @@ class FeatsController < ApplicationController
     @newest_user = newest.user if newest
 
     # Current user completed feat? logic
-    @user_completed_feat = @feat.owned_by_user(current_user)
+    @user_completed_feat = @feat.owned_by_user(current_user) if current_user
 
     if @user_completed_feat
       @completed_on = @user_completed_feat.created_at.strftime("%b %d, %Y")

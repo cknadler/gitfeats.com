@@ -88,7 +88,6 @@ GEM
       multipart-post (~> 1.1)
     ffi (1.2.0)
     fssm (0.2.9)
-    gravtastic (3.2.6)
     guard (1.5.4)
       listen (>= 0.4.2)
       lumberjack (>= 1.0.2)
@@ -269,7 +268,6 @@ DEPENDENCIES
   execjs
   factory_girl_rails
   faker
-  gravtastic
   guard-rspec
   guard-spork
   haml

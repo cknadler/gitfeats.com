@@ -9,7 +9,6 @@ gem 'jquery-rails'
 gem 'execjs'
 gem 'omniauth'
 gem 'omniauth-github'
-gem 'gravtastic'
 gem 'zurb-foundation', '~> 3.2.2'
 gem 'simplecov'
 

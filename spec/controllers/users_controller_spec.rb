@@ -40,6 +40,7 @@ describe UsersController do
       end
 
       it { should respond_with(302) }
+      it { should redirect_to(user_path(user)) }
     end
 
     context "with improperly capitalized username" do
@@ -48,6 +49,7 @@ describe UsersController do
       end
 
       it { should respond_with(302) }
+      it { should redirect_to(user_path(user)) }
     end
 
     context "with an invalid username" do
@@ -56,6 +58,7 @@ describe UsersController do
       end
 
       it { should respond_with(302) }
+      it { should redirect_to(:back) }
     end
 
     context "with no query" do
@@ -64,6 +67,7 @@ describe UsersController do
       end
 
       it { should respond_with(302) }
+      it { should redirect_to(:back) }
     end
   end
 end

@@ -7,7 +7,7 @@
       - @top_users.each do |top_user|
         - user = User.find(top_user[:id])
         .four.columns
-          %center= link_to image_tag(user.gravatar_url(size: 140), |
+          %center= link_to image_tag(gravatar_url(user, 140), |
               height: 50, width: 50, class: "rounded"), user  |
         .eight.columns
           %h5.top-user-text

@@ -7,8 +7,8 @@ class FeatsController < ApplicationController
   # GET /feats/1
   def show
     @feat = Feat.find(params[:id])
-    @percent = completed_percentage(@feat)
 
+    @percent = completed_percentage(@feat)
     newest = @feat.completed_feats.last
     @newest_user = newest.user if newest
 
@@ -26,7 +26,10 @@ class FeatsController < ApplicationController
   #
   # Returns percentage as an int
   def completed_percentage(feat)
+    # Special case where there are no users
+    return 0 if User.all.count == 0
+
     completed_num = CompletedFeat.find_all_by_feat_id(feat.id).count
-    ((completed_num.to_f / User.all.count.to_f) * 100).to_i
+    ((completed_num.to_f / User.all.count.to_f) * 100)
   end
 end

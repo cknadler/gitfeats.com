@@ -6,10 +6,10 @@ Gitfeats::Application.routes.draw do
   resources :users, only: [:show, :destroy]
 
   # Sessions
-  get   'login',                     to: 'sessions#new'
-  match '/auth/:provider/callback',  to: 'sessions#create'
-  match '/auth/failure',             to: 'sessions#failure'
-  match 'logout',                    to: 'sessions#destroy', :via => :delete
+  get   'login',                    to: 'sessions#new'
+  match '/auth/:provider/callback', to: 'sessions#create'
+  match '/auth/failure',            to: 'sessions#failure'
+  match 'logout',                   to: 'sessions#destroy', :via => :delete
 
   # Feats
   resources :feats, only: [:show, :index]

@@ -1,4 +1,4 @@
-// Place all the styles related to the public_pages controller here
+// Place all the styles related to the static_pages controller here
 
 span.prog_text {
   float: right;
@@ -26,7 +26,7 @@ span.prog_text {
   box-shadow: 0px 2px 2px #888888;
 
   // Hack to absorb the header padding
-  // Only used on the public_pages#home view
+  // Only used on the static_pages#home view
   margin-top: -30px;
 }
 

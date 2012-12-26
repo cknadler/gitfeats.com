@@ -23,7 +23,7 @@ Gitfeats::Application.routes.draw do
 
   # API
   scope '/api' do
-    match '/post_feats', to: 'api#post_feats', :via => :post
+    match '/feats', to: 'api#feats', :via => :post
   end
 
   # Vainity Routes

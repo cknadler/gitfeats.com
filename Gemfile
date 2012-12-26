@@ -25,7 +25,6 @@ end
 # Gems used in development
 group :development do
   gem 'quiet_assets'
-  gem 'debugger'
   gem 'annotate'
 
   # Better errors

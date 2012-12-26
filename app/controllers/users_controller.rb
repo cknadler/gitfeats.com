@@ -33,6 +33,8 @@ class UsersController < ApplicationController
 
   private
 
+  # TODO: Refactor
+  # possibly place in helper
   def roundup(num, ceiling)
     return num if num % ceiling  == 0
     return num + ceiling - (num % ceiling)

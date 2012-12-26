@@ -18,6 +18,8 @@ class Feat < ActiveRecord::Base
 
   attr_accessible :description, :name, :threshold, :filename
 
+  # TODO: Refactor
+  # Should return bool
   def owned_by_user(user)
     CompletedFeat.find_by_user_id_and_feat_id(user.id, self.id)
   end

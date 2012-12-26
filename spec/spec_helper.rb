@@ -25,7 +25,6 @@ Spork.prefork do
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
   RSpec.configure do |config|
-
     # This is due to a possible bug with RSpec
     config.include Capybara::DSL
 
@@ -36,7 +35,6 @@ Spork.prefork do
     # rspec-rails.
     config.infer_base_class_for_anonymous_controllers = true
 
-    # Include factory girl syntax
     config.include FactoryGirl::Syntax::Methods
   end
 end

@@ -1,34 +1,104 @@
 class ApiController < ApplicationController
-  before_filter :load_user
-  
-  def post_feats
+  # POST /api/feats
+  def feats
+    # unprocessable errors
+    unprocessable_error = validate_feats_params(params)
+    if unprocessable_error
+      return render :json => unprocessable_error, :status => 422
+    end
+
+    # authentication errors
+    @user = User.find_by_nickname(params[:username])
+
+    unless @user
+      msg = { message: "invalid username" }
+      return render :json => msg, :status => 401
+    end
+
+    unless @user.apikey == params[:key]
+      msg = { message: "invalid api key" }
+      return render :json => msg, :status => 401
+    end
+
+    # standard response
     if @user
-      update_history(params[:history])
+      update_history(params[:history]) if params[:history]
       complete_feats
     end
-    render :nothing => true
+
+    msg = { message: "OK" }
+    render :json => msg
   end
   
   private
-    def load_user
-      @user = User.find_by_nickname_and_apikey(params[:username], params[:key])
-    end
-    
-    def update_history( histories )
-      histories.each do |h_name, h_count|
-        command = Command.find_by_name(h_name)
-        ch = CommandHistory.find_or_create_by_user_id_and_command_id(@user.id, command.id)
-        ch.count = h_count
-        ch.save
+
+  # Validate params POST to /api/feats
+  #
+  # Returns an error hash if params are missing or malformatted
+  # Returns nil otherwise
+  #
+  # There are three types of errors possible:
+  # - missing: the key is not present and is required
+  # - invalid: the key is invalid (currently only with respect to history)
+  # - bad_formatting: the formatting for the value of specified key is wrong
+  def validate_feats_params(params_hash)
+    @error = {}
+
+    params_keys = params_hash.keys
+    required_keys = required_feats_params.keys
+
+    # check for missing params
+    required_keys.each do |required_key|
+      # this is rather hackish, keys passed to include? must be strings
+      unless params_keys.include?(required_key.to_s)
+        @error[required_key] = "missing"
       end
     end
-    
-    def complete_feats
-      feats = Feat.joins(:command => "command_histories")
-                  .where("command_histories.user_id = ? AND 
-                          command_histories.count >= feats.threshold", @user.id)
-      feats.each do |feat|
-        CompletedFeat.find_or_create_by_user_id_and_feat_id(@user.id, feat.id)
-      end
+
+    # check for bad formatting
+
+    # check for invalid keys in history
+
+    # check that feat params are of the right type
+
+    if @error.empty?
+      return nil
+    else
+      return {  
+               :message => "unprocessable",
+               :error => @error
+             }
     end
+
+    return @error.empty? ? nil : @error
+  end
+
+  def required_feats_params
+    @required_feats_params ||= 
+      {
+        :username => String,
+        :key      => String,
+        :history  => Hash
+      }
+  end
+
+  # TODO: Refactor
+  def update_history(histories)
+    histories.each do |h_name, h_count|
+      command = Command.find_by_name(h_name)
+      ch = CommandHistory.find_or_create_by_user_id_and_command_id(@user.id, command.id)
+      ch.count = h_count
+      ch.save
+    end
+  end
+  
+  # TODO: Refactor
+  def complete_feats
+    feats = Feat.joins(:command => "command_histories")
+                .where("command_histories.user_id = ? AND 
+                        command_histories.count >= feats.threshold", @user.id)
+    feats.each do |feat|
+      CompletedFeat.find_or_create_by_user_id_and_feat_id(@user.id, feat.id)
+    end
+  end
 end

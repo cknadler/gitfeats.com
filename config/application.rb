@@ -2,6 +2,8 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
+require File.expand_path('lib/middleware/custom_params_parser')
+
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
   Bundler.require(*Rails.groups(:assets => %w(development test)))
@@ -63,5 +65,9 @@ module Gitfeats
     config.generators do |g|
       g.fixture_replacement :factory_girl
     end
+
+    # swap ActionDispatch::ParamsParser with custom ParamsParser
+    # This allows for responding with 400 on bad post params
+    config.middleware.swap ActionDispatch::ParamsParser, CustomParamsParser
   end
 end

@@ -22,7 +22,7 @@ describe "Api" do
     end
 
     context "failure" do
-      
+
       # 401 errors
       describe "with invalid username" do
         before do
@@ -32,7 +32,7 @@ describe "Api" do
             :history => { command.name => 1 }
         end
 
-        its(["message"]) { should match("invalid username") }
+        its(["message"]) { should match("Invalid username") }
       end
 
       describe "with invalid key" do
@@ -43,7 +43,7 @@ describe "Api" do
             :history => { command.name => 1 }
         end
 
-        its(["message"]) { should match("invalid api key") }
+        its(["message"]) { should match("Invalid API key") }
       end
 
       # 422 errors
@@ -54,7 +54,7 @@ describe "Api" do
             :history => { command.name => 1 }
         end
 
-        its(["message"]) { should match("unprocessable") }
+        its(["message"]) { should match("Unprocessable") }
         its(["error"]) { should have(1).error }
       end
 
@@ -65,7 +65,7 @@ describe "Api" do
             :history => { command.name => 1 }
         end
 
-        its(["message"]) { should match("unprocessable") }
+        its(["message"]) { should match("Unprocessable") }
         its(["error"]) { should have(1).error }
       end
 
@@ -75,7 +75,7 @@ describe "Api" do
             :history => { command.name => 1 }
         end
 
-        its(["message"]) { should match("unprocessable") }
+        its(["message"]) { should match("Unprocessable") }
         its(["error"]) { should have(2).errors }
       end
 
@@ -84,7 +84,7 @@ describe "Api" do
           post "/api/feats"
         end
         
-        its(["message"]) { should match("unprocessable") }
+        its(["message"]) { should match("Unprocessable") }
         its(["error"]) { should have(3).errors }
       end
     end

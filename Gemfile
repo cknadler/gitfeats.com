@@ -11,6 +11,7 @@ gem 'omniauth'
 gem 'omniauth-github'
 gem 'zurb-foundation', '~> 3.2.2'
 gem 'simplecov'
+gem 'figaro'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -1,22 +1,29 @@
 class ApiController < ApplicationController
+
+  # catch JSON parsing error
+  rescue_from ParseError do |e|
+    msg = { message: "Problems parsing JSON" }
+    render :json => msg, :status => 400
+  end
+
   # POST /api/feats
   def feats
-    # unprocessable errors
+    # check for unprocessable errors
     unprocessable_error = validate_feats_params(params)
     if unprocessable_error
       return render :json => unprocessable_error, :status => 422
     end
 
-    # authentication errors
+    # check for authentication errors
     @user = User.find_by_nickname(params[:username])
 
     unless @user
-      msg = { message: "invalid username" }
+      msg = { message: "Invalid username" }
       return render :json => msg, :status => 401
     end
 
     unless @user.apikey == params[:key]
-      msg = { message: "invalid api key" }
+      msg = { message: "Invalid API key" }
       return render :json => msg, :status => 401
     end
 
@@ -49,6 +56,7 @@ class ApiController < ApplicationController
 
     # check for missing params
     required_keys.each do |required_key|
+      # TODO: Refactor
       # this is rather hackish, keys passed to include? must be strings
       unless params_keys.include?(required_key.to_s)
         @error[required_key] = "missing"
@@ -59,13 +67,11 @@ class ApiController < ApplicationController
 
     # check for invalid keys in history
 
-    # check that feat params are of the right type
-
     if @error.empty?
       return nil
     else
       return {  
-               :message => "unprocessable",
+               :message => "Unprocessable",
                :error => @error
              }
     end

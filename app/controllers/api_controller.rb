@@ -1,11 +1,5 @@
 class ApiController < ApplicationController
 
-  # catch JSON parsing error
-  rescue_from ParseError do |e|
-    msg = { message: "Problems parsing JSON" }
-    render :json => msg, :status => 400
-  end
-
   # POST /api/feats
   def feats
     # check for unprocessable errors
@@ -47,7 +41,7 @@ class ApiController < ApplicationController
   # There are three types of errors possible:
   # - missing: the key is not present and is required
   # - invalid: the key is invalid (currently only with respect to history)
-  # - bad_formatting: the formatting for the value of specified key is wrong
+  # - wrong_type: the formatting for the value of specified key is wrong
   def validate_feats_params(params_hash)
     @error = {}
 
@@ -56,35 +50,49 @@ class ApiController < ApplicationController
 
     # check for missing params
     required_keys.each do |required_key|
-      # TODO: Refactor
-      # this is rather hackish, keys passed to include? must be strings
-      unless params_keys.include?(required_key.to_s)
+
+      # if the param is present
+      if params_keys.include?(required_key)
+
+        # check for proper param types
+        unless params_hash[required_key].class == required_feats_params[required_key]
+          @error[required_key] = "wrong_type"
+        end
+        
+      # add the missing param to the errors hash
+      else
         @error[required_key] = "missing"
       end
     end
 
-    # check for bad formatting
-
     # check for invalid keys in history
-
-    if @error.empty?
-      return nil
-    else
-      return {  
-               :message => "Unprocessable",
-               :error => @error
-             }
+    # if the history has passed all other validations so far
+    if @error["history"].nil?
+      history_errors = {}
+      params_hash["history"].each do |key, value|
+        unless Command.find_by_name(key)
+          history_errors[key] = "invalid"
+        end
+      end
+      @error["history"] = history_errors unless history_errors.empty?
     end
 
-    return @error.empty? ? nil : @error
+    return @error.empty? ? nil : format_unprocessable_error(@error)
+  end
+
+  def format_unprocessable_error(error)
+    {
+      :message => "Unprocessable",
+      :error => error
+    }
   end
 
   def required_feats_params
     @required_feats_params ||= 
       {
-        :username => String,
-        :key      => String,
-        :history  => Hash
+        "username" => String,
+        "key"      => String,
+        "history"  => ActiveSupport::HashWithIndifferentAccess
       }
   end
 

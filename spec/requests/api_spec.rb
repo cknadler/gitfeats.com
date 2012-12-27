@@ -24,7 +24,7 @@ describe "Api" do
     context "failure" do
 
       # 401 errors
-      describe "with invalid username" do
+      describe "with non-existant username" do
         before do
           post "/api/feats", 
             :username => "invalid_username",
@@ -35,7 +35,7 @@ describe "Api" do
         its(["message"]) { should match("Invalid username") }
       end
 
-      describe "with invalid key" do
+      describe "with non-existant key" do
         before do
           post "/api/feats", 
             :username => user.nickname,
@@ -56,6 +56,10 @@ describe "Api" do
 
         its(["message"]) { should match("Unprocessable") }
         its(["error"]) { should have(1).error }
+
+        it "should have the right error content" do
+          subject["error"]["username"].should match("missing")
+        end
       end
 
       describe "with no key" do
@@ -67,6 +71,10 @@ describe "Api" do
 
         its(["message"]) { should match("Unprocessable") }
         its(["error"]) { should have(1).error }
+
+        it "should have the right error content" do
+          subject["error"]["key"].should match("missing")
+        end
       end
 
       describe "with no username or key" do
@@ -77,6 +85,11 @@ describe "Api" do
 
         its(["message"]) { should match("Unprocessable") }
         its(["error"]) { should have(2).errors }
+
+        it "should have the right error content" do
+          subject["error"]["username"].should match("missing")
+          subject["error"]["key"].should match("missing")
+        end
       end
 
       describe "with no params" do
@@ -86,6 +99,85 @@ describe "Api" do
         
         its(["message"]) { should match("Unprocessable") }
         its(["error"]) { should have(3).errors }
+
+        it "should have the right error content" do
+          subject["error"]["username"].should match("missing")
+          subject["error"]["key"].should match("missing")
+          subject["error"]["history"].should match("missing")
+        end
+      end
+
+      describe "with wrong type username" do
+        before do
+          post "/api/feats",
+            :username => { :some => "hash" },
+            :key => user.apikey,
+            :history => { command.name => 1 }
+        end
+
+        its(["message"]) { should match("Unprocessable") }
+        its(["error"]) { should have(1).error }
+
+        it "should have the right error content" do
+          subject["error"]["username"].should match("wrong_type")
+        end
+      end
+
+      describe "with wrong type history" do
+        before do
+          post "/api/feats",
+            :username => user.nickname,
+            :key => user.apikey,
+            :history => "some_string"
+        end
+
+        its(["message"]) { should match("Unprocessable") }
+        its(["error"]) { should have(1).error }
+
+        it "should have the right error content" do
+          subject["error"]["history"].should match("wrong_type")
+        end
+      end
+
+      describe "with wrong type key and history" do
+        before do
+          post "/api/feats",
+            :username => user.nickname,
+            :key => { :some => "hash" },
+            :history => "some_string"
+        end
+
+        its(["message"]) { should match("Unprocessable") }
+        its(["error"]) { should have(2).errors }
+
+        it "should have the right error content" do
+          subject["error"]["key"].should match("wrong_type")
+          subject["error"]["history"].should match("wrong_type")
+        end
+      end
+
+      describe "with invalid history keys" do
+        before do
+          history =
+            {
+              "invalid_cmd1" => 1,
+              command.name => 1,
+              "invalid_cmd2" => 1
+            }
+          
+          post "/api/feats",
+            :username => user.nickname,
+            :key => user.apikey,
+            :history => history
+        end
+
+        its(["message"]) { should match("Unprocessable") }
+        its(["error"]) { should have(1).error }
+
+        it "should have the right error content" do
+          subject["error"]["history"]["invalid_cmd1"].should match("invalid")
+          subject["error"]["history"]["invalid_cmd2"].should match("invalid")
+        end
       end
     end
   end

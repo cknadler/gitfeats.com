@@ -27,7 +27,9 @@ end
 group :development do
   gem 'quiet_assets'
   gem 'annotate'
-  gem 'debugger'
+
+  # debugging
+  gem 'pry'
 
   # Better errors
   gem 'better_errors'

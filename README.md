@@ -1,4 +1,4 @@
-# gitfeats.com [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/cknadler/gitfeats.com) [![Dependency Status](https://gemnasium.com/cknadler/gitfeats.com.png)](https://gemnasium.com/cknadler/gitfeats.com) [![Build Status](https://travis-ci.org/cknadler/gitfeats.com.png)](https://travis-ci.org/cknadler/gitfeats.com)
+# gitfeats.com [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/cknadler/gitfeats.com) [![Build Status](https://travis-ci.org/cknadler/gitfeats.com.png)](https://travis-ci.org/cknadler/gitfeats.com)
 
 
 A stats site for the [git-feats](https://github.com/cknadler/git-feats) gem. 

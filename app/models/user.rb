@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   # Find a user by nickname ignoring case and 404 if name isn't found
   def self.find_by_nickname!(nickname)
     where(['lower(nickname) =?', nickname.downcase]).first!
-  end  
+  end
 
   # Override find_by_nickname to ignore case
   def self.find_by_nickname(nickname)
@@ -60,11 +60,11 @@ class User < ActiveRecord::Base
   end
 
   private
-  
+
   def create_apikey
-    self.apikey = Digest::SHA1.hexdigest(Time.now.to_s)   
+    self.apikey = Digest::SHA1.hexdigest(Time.now.to_s)
   end
-  
+
   def self.extract_info(hash)
     {
       :uid         => hash.fetch('uid'),
